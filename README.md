@@ -135,6 +135,93 @@ shell不再内置，支持用户自定义上传，输入你的shell代码，文�
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/saddad.png)
 
+# 编写小记
+
+使用了IWannaGetAll-v1.2.1工具的jeecgboot模块之后
+发现了2处，相对明显的bug,所以在两个bug基础上进行优化
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/asdsadads.JPG)
+
+第一处bug如下：
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/adadad.PNG)
+
+Jeecg-Boot qurestSql-SQL注入漏洞
+漏洞显示是存在，实际上经过验证，发现漏洞是不存在的！
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/dsfsf.jpg)
+
+第二处bug如下：
+
+发现IWannaGetAll-v1.2.1编写作者，在针对jeecg-boot-querySysUser信息泄露漏洞这个漏洞上
+默认只写了接口jeecg-boot的漏洞检测，然而这种检测，实际上会存在误判几率
+
+原因如下：
+很多jeecg的网站默认接口不一定都是jeecg-boot
+那么一旦有其他接口，则可能出现误判
+
+比如
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/saddasd.jpg)
+
+在IWannaGetAll-v1.2.1工具中的模块，检测显示漏洞不存在，那是因为他只进行了jeecg-boot的漏洞检测
+
+然而这个网站，接口并不是jeecg-boot，所以造成了误判
+
+那么如何解决这个问题呢？
+我们先来到jeecg网站
+发现这里
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/gfds.png)
+
+发现这里就是接口的位置
+那么一般接口都会写到这里
+接口位置： window._CONFIG['domianURL'] 
+这个地方
+我们可以采取正则的方式来抓取这个接口，再进行判断，这样就精准了
+"window._CONFIG\\['domianURL'\\] = \\'(.*?);");
+找到这个接口，再判断他就相对精准了
+两种实现方式
+1，抓取到的接口传递给文本，通过文本叠加到payload,发送请求进行判断
+2、通过抓取到的接口，进行二次判断
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/fghfh.jpg)
+
+通过发现这个漏洞是存在的
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/fghfhg.png)
+
+指纹识别小技巧：
+抓取：
+window._CONFIG\\['onlinePreviewDomainURL'\\] = \\'(.*?);")
+查找value.contains("jeecg")) 
+这样也可以进行识别
+
+jeecg-boot queryFieldBySql远程命令执行漏洞优化
+输出的是fieldName位置
+如果直接response.toString影响美观
+采用了解析json数据遍历查找方式，来进行优化
+
+ for (Object field : fieldList) {
+  if (field instanceof JSONObject) {
+ JSONObject fieldObject = (JSONObject) field;
+ String fieldName = (String) fieldObject.get("fieldName");
+
+ 当用户输入cmdshell命令时，将只输出fieldName结果
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
 
