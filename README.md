@@ -94,6 +94,53 @@ Jeecg-Boot qurestSql-SQL注入漏洞
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sdfdsaa.png)
 
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/ewrwrw.png)
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/4rwerwr.png)
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/erertert.JPG)
+
+ 选择模块可单独选择你要检测的漏洞
+
+cmdshel模块
+
+如存在jeecg-boot queryFieldBySql远程命令执行漏洞
+选择cmd模块的jeecg-boot queryFieldBySql远程命令执行漏洞
+输入你要执行的命令即可
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/rggdsgs.png)
+
+
+文件上传模块：
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/erwwrw.JPG)
+
+如存在jeecg-boot jmreport任意文件上传漏洞
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/erewr.png)
+
+shell不再内置，支持用户自定义上传，输入你的shell代码，文件名，点击上传即可
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/dfdsfdsf.png)
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/dsfsdfdsf.png)
+
+批量检测模块：
+
+下载jeecgExploitss jar程序，本地新建文本urls.txt
+ 选择你要检测的模块，点击检测，即可开始批量检测
+ 批量检测，默认只输出存在漏洞的网站
+
+ 后续根据版本优化再添加其他的批量检测模块
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/saddad.png)
+
+
+ 
+
+
+
+ 
 
 
 
