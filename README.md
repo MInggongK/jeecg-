@@ -204,12 +204,6 @@ Jeecg-Boot qurestSql-SQL注入漏洞
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/fghfhg.png)
 
-指纹识别小技巧：
-抓取：
-window._CONFIG\\['onlinePreviewDomainURL'\\] = \\'(.*?);")
-查找value.contains("jeecg")) 
-这样也可以进行识别
-
 jeecg-boot queryFieldBySql远程命令执行漏洞优化
 
 输出的是fieldName位置
