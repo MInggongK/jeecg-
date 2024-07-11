@@ -105,7 +105,9 @@ Jeecg-Boot qurestSql-SQL注入漏洞
 cmdshel模块
 
 如存在jeecg-boot queryFieldBySql远程命令执行漏洞
+
 选择cmd模块的jeecg-boot queryFieldBySql远程命令执行漏洞
+
 输入你要执行的命令即可
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/rggdsgs.png)
@@ -128,7 +130,9 @@ shell不再内置，支持用户自定义上传，输入你的shell代码，文�
 批量检测模块：
 
 下载jeecgExploitss jar程序，本地新建文本urls.txt
+
  选择你要检测的模块，点击检测，即可开始批量检测
+ 
  批量检测，默认只输出存在漏洞的网站
 
  后续根据版本优化再添加其他的批量检测模块
@@ -138,6 +142,7 @@ shell不再内置，支持用户自定义上传，输入你的shell代码，文�
 # 编写小记
 
 使用了IWannaGetAll-v1.2.1工具的jeecgboot模块之后
+
 发现了2处，相对明显的bug,所以在两个bug基础上进行优化
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/asdsadads.JPG)
@@ -147,6 +152,7 @@ shell不再内置，支持用户自定义上传，输入你的shell代码，文�
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/adadad.PNG)
 
 Jeecg-Boot qurestSql-SQL注入漏洞
+
 漏洞显示是存在，实际上经过验证，发现漏洞是不存在的！
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/dsfsf.jpg)
@@ -157,7 +163,9 @@ Jeecg-Boot qurestSql-SQL注入漏洞
 默认只写了接口jeecg-boot的漏洞检测，然而这种检测，实际上会存在误判几率
 
 原因如下：
+
 很多jeecg的网站默认接口不一定都是jeecg-boot
+
 那么一旦有其他接口，则可能出现误判
 
 比如
@@ -175,14 +183,21 @@ Jeecg-Boot qurestSql-SQL注入漏洞
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/gfds.png)
 
 发现这里就是接口的位置
+
 那么一般接口都会写到这里
+
 接口位置： window._CONFIG['domianURL'] 
 这个地方
 我们可以采取正则的方式来抓取这个接口，再进行判断，这样就精准了
+
 "window._CONFIG\\['domianURL'\\] = \\'(.*?);");
+
 找到这个接口，再判断他就相对精准了
+
 两种实现方式
+
 1，抓取到的接口传递给文本，通过文本叠加到payload,发送请求进行判断
+
 2、通过抓取到的接口，进行二次判断
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/fghfh.jpg)
