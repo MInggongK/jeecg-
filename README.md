@@ -141,7 +141,7 @@ shell不再内置，支持用户自定义上传，输入你的shell代码，文�
 
 # 编写小记
 
-使用了IWannaGetAll-v1.2.1工具的jeecgboot模块之后
+使用参考了IWannaGetAll-v1.2.1工具的jeecgboot模块之后
 
 发现了2处，相对明显的bug,所以在两个bug基础上进行优化
 
