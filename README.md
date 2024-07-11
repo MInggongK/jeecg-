@@ -88,6 +88,11 @@ jeecg-boot-getDictItemsByTable-sqli注入漏洞
 
 Jeecg-Boot qurestSql-SQL注入漏洞
 
+# 功能使用
+
+默认模块可一键扫描所有漏洞
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sdfdsaa.png)
 
 
 
