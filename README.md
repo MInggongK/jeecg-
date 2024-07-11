@@ -204,12 +204,12 @@ Jeecg-Boot qurestSql-SQL注入漏洞
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/fghfhg.png)
 
+如果如果抓取到的接口是jeecgboot，检测漏洞不存在，可以忽略
+如果抓取到新接口，则填入接口，进行接口判断
+
 jeecg-boot queryFieldBySql远程命令执行漏洞优化
 
 输出的是fieldName位置
-
-如果直接response.toString影响美观
-
 采用了解析json数据遍历查找方式，来进行优化
 
  for (Object field : fieldList) {
