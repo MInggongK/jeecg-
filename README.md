@@ -155,8 +155,6 @@ Jeecg-Boot qurestSql-SQL注入漏洞
 
 漏洞显示是存在，实际上经过验证，发现漏洞是不存在的！
 
-![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/dsfsf.jpg)
-
 第二处bug如下：
 
 发现IWannaGetAll-v1.2.1编写作者，在针对jeecg-boot-querySysUser信息泄露漏洞这个漏洞上
