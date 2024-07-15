@@ -245,6 +245,8 @@ JeecgBoot综合漏洞利用工具v3.1版
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sfdsfds.png)
 
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/gfdgfdgfd.png)
+
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/fdsfdsfsd.png)
 
 增加了内存马注入  冰蝎/哥斯拉 ,适用于：jeecg-boot queryFieldBySql漏洞
