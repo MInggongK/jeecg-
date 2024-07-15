@@ -239,7 +239,9 @@ JeecgBoot综合漏洞利用工具v3.1版
 
 优化了Jeecg-Boot qurestSql-SQL注入漏洞
 
-增加了本地代理功能，默认http/https
+增加了本地代理功能，默认http/https 适用于本地抓包调试
+
+使用方法:http代理，输入本地代理IP，代理端口,点击设置，输入IP，选择模块ALL，即可开始全局调试抓包
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sfdsfds.png)
 
@@ -247,7 +249,7 @@ JeecgBoot综合漏洞利用工具v3.1版
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sdfdfdzf.png)
 
-增加了自定义路径上传
+增加了自定义路径上传，你可上传到指定的目录
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/gfddfs.png)
 
