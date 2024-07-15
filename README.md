@@ -225,6 +225,34 @@ jeecg-boot queryFieldBySql远程命令执行漏洞优化
 
  当用户输入cmdshell命令时，将只输出fieldName结果
 
+# 更新日志
+
+JeecgBoot综合漏洞利用工具v3.1版
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sadad.png)
+
+增加了jeecg-boot-任意文件下载模块检测
+
+增加了jeecg-boot-jeecgFormDemoController模块检测
+
+优化了jeecg-boot-queryTableData-sqli注入漏洞
+
+优化了Jeecg-Boot qurestSql-SQL注入漏洞
+
+增加了本地代理功能，默认http/https
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sfdsfds.png)
+
+增加了内存马注入  冰蝎/哥斯拉 ,适用于：jeecg-boot queryFieldBySql漏洞
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sdfdfdzf.png)
+
+增加了自定义路径上传
+
+![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/gfddfs.png)
+
+
+
 
 
 
