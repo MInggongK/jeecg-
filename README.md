@@ -249,7 +249,7 @@ JeecgBoot综合漏洞利用工具v3.1版
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sdfdfdzf.png)
 
-增加了自定义路径上传，你可上传到指定的目录
+增加了自定义路径上传，可上传到指定的目录
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/gfddfs.png)
 
