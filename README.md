@@ -261,10 +261,6 @@ v4.0版填入格式：不包含/  不留空格  如sdfs目录
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/hfg.png)
 
-抓取到新接口：
-
-![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/hf.png)
-
 
 场景2：
 
