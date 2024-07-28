@@ -266,35 +266,6 @@ v4.0版填入格式：不包含/  不留空格  如sdfs目录
 
 ![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/fgddf.png)
 
-JeecgBoot综合漏洞利用工具v3.1版
-
-增加了jeecg-boot-任意文件下载模块检测
-
-增加了jeecg-boot-jeecgFormDemoController模块检测
-
-优化了jeecg-boot-queryTableData-sqli注入漏洞
-
-优化了Jeecg-Boot qurestSql-SQL注入漏洞
-
-增加了本地代理功能，默认http/https 适用于本地抓包调试
-
-使用方法:http代理，输入本地代理IP，代理端口,点击设置，输入IP，端口，选择模块all，即可开始全局调试抓包
-
-![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sfdsfds.png)
-
-![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/fdsfdsfsd.png)
-
-增加了内存马注入  冰蝎/哥斯拉 ,适用于：jeecg-boot queryFieldBySql漏洞
-
-![image](https://github.com/MInggongK/jeecg-/blob/main/jeecgExploitss/sdfdfdzf.png)
-
-
-
-
-
-
-
-
 
 
 
